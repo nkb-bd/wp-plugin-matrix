@@ -1,0 +1,80 @@
+/**
+ * Element Plus Component Fixes
+ * 
+ * This file contains fixes for Element Plus components
+ */
+
+// Fix for El-Message positioning
+.el-message {
+  z-index: 9999 !important;
+  top: 20px !important;
+  position: fixed !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: auto !important;
+  max-width: 80% !important;
+  
+  // Make sure the message is visible in WordPress admin
+  &.el-message--error,
+  &.el-message--success,
+  &.el-message--warning,
+  &.el-message--info {
+    display: flex !important;
+    align-items: center !important;
+    padding: 10px 15px !important;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !important;
+    pointer-events: all !important;
+  }
+  
+  // Fix for message content
+  .el-message__content {
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    color: inherit !important;
+  }
+  
+  // Fix for message icon
+  .el-message__icon {
+    margin-right: 10px !important;
+    font-size: 16px !important;
+  }
+  
+  // Fix for close button
+  .el-message__closeBtn {
+    position: absolute !important;
+    top: 50% !important;
+    right: 15px !important;
+    transform: translateY(-50%) !important;
+    font-size: 16px !important;
+    color: #909399 !important;
+    cursor: pointer !important;
+    
+    &:hover {
+      color: #606266 !important;
+    }
+  }
+}
+
+// Fix for message container
+.el-message-box__wrapper {
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  z-index: 9999 !important;
+  overflow: auto !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+// Fix for notifications
+.el-notification {
+  z-index: 9999 !important;
+  position: fixed !important;
+  right: 16px !important;
+  pointer-events: all !important;
+}

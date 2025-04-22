@@ -6,20 +6,36 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Dependencies
+/node_modules
+/vendor
 
-## specific
+# Build files
+/dist
+/assets
 
-node_modules
-*.zip
-.DS_Store
-package-lock.json
+# Environment files
+.env
+.env.*
+!.env.example
 
+# Editor files
 .idea
-node_modules
-svn/*
-dist/
-/assets/*
-!assets/index.php
+.vscode
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package files
+*.zip
 package-lock.json
+composer.lock
 
+# WordPress specific
+wp-config.php
 
+# Allow index.php files
+!**/index.php

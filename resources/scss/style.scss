@@ -1,0 +1,134 @@
+// Import variables
+
+// Import custom Element Plus theme first
+@import 'element-plus-theme';
+
+// Import Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Import direct Element Plus overrides
+@import 'variables';
+
+// Import WordPress admin style overrides
+@import 'admin-overrides';
+
+
+/**
+ * Custom Admin Styles
+ */
+
+// Admin page container
+.wp-boilerplate-admin-page {
+  padding: $spacing-md;
+  color: $text-color;
+  font-family: $font-family-sans-serif;
+
+  // Main navigation menu
+  .main-menu {
+    margin-bottom: $spacing-lg;
+    background-color: $white;
+    padding: $spacing-md;
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-sm;
+
+    a {
+      text-decoration: none;
+      padding: $spacing-sm $spacing-md;
+      border-radius: $border-radius-md;
+      color: $text-color;
+      transition: $transition-base;
+      display: inline-block;
+      margin-right: $spacing-xs;
+
+      &:hover {
+        background-color: $light-gray;
+        color: $secondary-color;
+      }
+
+      &.router-link-active {
+        font-weight: $font-weight-bold;
+        color: $primary-color;
+        background-color: mix($white, $primary-color, 90%);
+      }
+    }
+  }
+
+  // Content area
+  .content-area {
+    background-color: $white;
+    padding: $spacing-lg;
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-sm;
+    margin-bottom: $spacing-lg;
+  }
+
+  // Page title
+  .page-title {
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-normal;
+    margin: 0 0 $spacing-lg;
+    padding: 0;
+    line-height: $line-height-base;
+    color: $dark-gray;
+  }
+
+  // Section
+  .section {
+    margin-bottom: $spacing-xl;
+
+    &-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-md;
+      padding-bottom: $spacing-sm;
+      border-bottom: $border-width solid $light-gray;
+      color: $dark-gray;
+    }
+  }
+
+  // Form styles
+  .form-group {
+    margin-bottom: $spacing-md;
+  }
+
+  // Card styles
+  .card {
+    border-radius: $border-radius-md;
+    box-shadow: $box-shadow-sm;
+    background-color: $white;
+    margin-bottom: $spacing-md;
+
+    &-header {
+      padding: $spacing-md;
+      border-bottom: $border-width solid $light-gray;
+      font-weight: $font-weight-bold;
+    }
+
+    &-body {
+      padding: $spacing-md;
+    }
+
+    &-footer {
+      padding: $spacing-md;
+      border-top: $border-width solid $light-gray;
+      background-color: $light-gray;
+    }
+  }
+
+  // Utility classes
+  .text-primary { color: $primary-color; }
+  .text-success { color: $success-color; }
+  .text-warning { color: $warning-color; }
+  .text-danger { color: $danger-color; }
+  .text-info { color: $info-color; }
+
+  .bg-primary { background-color: $primary-color; color: $white; }
+  .bg-success { background-color: $success-color; color: $white; }
+  .bg-warning { background-color: $warning-color; color: $dark-gray; }
+  .bg-danger { background-color: $danger-color; color: $white; }
+  .bg-info { background-color: $info-color; color: $white; }
+  .bg-light { background-color: $light-gray; color: $dark-gray; }
+  .bg-dark { background-color: $dark-gray; color: $white; }
+}

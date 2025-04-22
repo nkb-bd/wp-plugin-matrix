@@ -1,0 +1,178 @@
+/**
+ * Custom Element Plus Theme
+ *
+ * This file imports the variables and creates a custom theme for Element Plus.
+ * See: https://element-plus.org/en-US/component/button.html#custom-style
+ */
+
+// Import variables
+@import 'variables';
+
+// Generate color variants
+$--color-primary-light-1: mix($white, $--color-primary, 10%);
+$--color-primary-light-2: mix($white, $--color-primary, 20%);
+$--color-primary-light-3: mix($white, $--color-primary, 30%);
+$--color-primary-light-4: mix($white, $--color-primary, 40%);
+$--color-primary-light-5: mix($white, $--color-primary, 50%);
+$--color-primary-light-6: mix($white, $--color-primary, 60%);
+$--color-primary-light-7: mix($white, $--color-primary, 70%);
+$--color-primary-light-8: mix($white, $--color-primary, 80%);
+$--color-primary-light-9: mix($white, $--color-primary, 90%);
+
+// Success color variants
+$--color-success-light: mix($white, $--color-success, 80%);
+$--color-success-lighter: mix($white, $--color-success, 90%);
+
+// Warning color variants
+$--color-warning-light: mix($white, $--color-warning, 80%);
+$--color-warning-lighter: mix($white, $--color-warning, 90%);
+
+// Danger color variants
+$--color-danger-light: mix($white, $--color-danger, 80%);
+$--color-danger-lighter: mix($white, $--color-danger, 90%);
+
+// Info color variants
+$--color-info-light: mix($white, $--color-info, 80%);
+$--color-info-lighter: mix($white, $--color-info, 90%);
+
+// Additional Element Plus variables
+$--font-line-height-primary: $line-height-base;
+$--border-style-base: solid;
+$--border-color-base: $border-color;
+$--border-color-light: lighten($border-color, 5%);
+$--border-color-lighter: lighten($border-color, 10%);
+$--border-color-extra-light: lighten($border-color, 15%);
+$--fill-base: $light-gray;
+$--background-color-base: $light-gray;
+$--disabled-bg-base: $light-gray;
+$--disabled-border-base: $border-color;
+$--button-font-weight: $font-weight-normal;
+$--button-padding-vertical: $spacing-sm;
+$--button-padding-horizontal: $spacing-md;
+$--card-border-radius: $border-radius-md;
+$--popup-modal-bg-color: $white;
+$--popup-modal-opacity: 0.5;
+$--dialog-box-shadow: $box-shadow-md;
+$--dialog-title-font-size: $font-size-xl;
+$--dialog-font-size: $font-size-base;
+$--dialog-padding-primary: $spacing-md;
+$--table-border-color: $border-color;
+$--table-border: $border-width solid $--table-border-color;
+$--table-text-color: $text-color;
+$--table-header-color: darken($text-color, 10%);
+$--table-row-hover-background: $light-gray;
+
+// Set CSS variables for Element Plus
+:root, body {
+  --el-color-primary: #{$--color-primary};
+  --el-color-primary-light-1: #{$--color-primary-light-1};
+  --el-color-primary-light-2: #{$--color-primary-light-2};
+  --el-color-primary-light-3: #{$--color-primary-light-3};
+  --el-color-primary-light-4: #{$--color-primary-light-4};
+  --el-color-primary-light-5: #{$--color-primary-light-5};
+  --el-color-primary-light-6: #{$--color-primary-light-6};
+  --el-color-primary-light-7: #{$--color-primary-light-7};
+  --el-color-primary-light-8: #{$--color-primary-light-8};
+  --el-color-primary-light-9: #{$--color-primary-light-9};
+
+  --el-color-success: #{$--color-success};
+  --el-color-success-light: #{$--color-success-light};
+  --el-color-success-lighter: #{$--color-success-lighter};
+
+  --el-color-warning: #{$--color-warning};
+  --el-color-warning-light: #{$--color-warning-light};
+  --el-color-warning-lighter: #{$--color-warning-lighter};
+
+  --el-color-danger: #{$--color-danger};
+  --el-color-danger-light: #{$--color-danger-light};
+  --el-color-danger-lighter: #{$--color-danger-lighter};
+
+  --el-color-info: #{$--color-info};
+  --el-color-info-light: #{$--color-info-light};
+  --el-color-info-lighter: #{$--color-info-lighter};
+}
+
+// Import Element Plus styles
+@import 'element-plus/theme-chalk/src/index.scss';
+
+// Additional custom overrides
+.el-button--primary {
+  background-color: $primary-color !important;
+  border-color: $primary-color !important;
+
+  &:hover, &:focus {
+    background-color: $secondary-color !important;
+    border-color: $secondary-color !important;
+  }
+}
+
+.el-message {
+  border-width: 0;
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-md;
+}
+
+.el-card {
+  border: none;
+  box-shadow: $box-shadow-sm;
+  transition: $transition-base;
+
+  &:hover {
+    box-shadow: $box-shadow-md;
+  }
+}
+
+// Custom WordPress admin style integration
+.el-form-item__label {
+  font-weight: $font-weight-bold;
+}
+
+.el-table {
+  border: $border-width solid $border-color;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+
+  th.el-table__cell {
+    background-color: $light-gray;
+    font-weight: $font-weight-bold;
+  }
+}
+
+.el-pagination {
+  margin-top: $spacing-md;
+  justify-content: flex-end;
+}
+
+.el-tabs__item {
+  &.is-active {
+    color: $primary-color;
+  }
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+// Dark mode support (if enabled in settings)
+.wp-boilerplate-dark-mode {
+  --el-color-primary: #{lighten($primary-color, 10%)};
+  --el-color-success: #{lighten($success-color, 10%)};
+  --el-color-warning: #{$warning-color};
+  --el-color-danger: #{lighten($danger-color, 10%)};
+  --el-color-info: #{lighten($info-color, 10%)};
+  --el-bg-color: #{$dark-gray};
+  --el-bg-color-overlay: #{lighten($dark-gray, 5%)};
+  --el-text-color-primary: #{$light-gray};
+  --el-border-color: #{lighten($dark-gray, 10%)};
+
+  .el-card {
+    background-color: lighten($dark-gray, 3%);
+    color: $light-gray;
+  }
+
+  .el-button--default {
+    background-color: lighten($dark-gray, 10%);
+    border-color: lighten($dark-gray, 15%);
+    color: $light-gray;
+  }
+}
