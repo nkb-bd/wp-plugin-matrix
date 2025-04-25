@@ -4,10 +4,10 @@ namespace WpBoilerplate\Model;
 
 /**
  * Class Snippet
- * 
+ *
  * Sample model class
  */
-class Snippet
+class DemoModel
 {
     /**
      * Table name

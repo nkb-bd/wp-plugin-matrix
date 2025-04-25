@@ -14,7 +14,7 @@ A modern WordPress plugin boilerplate with Vue.js, Tailwind CSS, and Laravel Mix
 - Database migration system similar to Laravel
 - Security helpers for CSRF protection, XSS protection, and input sanitization
 - Debug panel for development
-- CLI installer for quick setup and customization
+- Simple plugin renamer script for quick setup and customization (no dependencies required)
 - Advanced UI components library:
   - Data tables with sorting, filtering, and pagination
   - Modal dialogs
@@ -62,10 +62,11 @@ tailwind.config.js    # Tailwind CSS configuration
    git clone https://github.com/yourusername/wp-boilerplate
    ```
 
-2. Rename the plugin to your desired name:
+2. Rename the plugin to your desired name using the dependency-free renamer script:
    ```
    php rename-plugin.php YourPluginName
    ```
+   This will rename all files, namespaces, function prefixes, and constants to match your plugin name.
 
 3. Install JavaScript dependencies:
    ```
@@ -83,7 +84,7 @@ tailwind.config.js    # Tailwind CSS configuration
 
 ### PHP
 
-The plugin follows a modern PHP architecture with PSR-4 autoloading (no Composer required). All PHP code is organized in the `app` directory with proper namespacing.
+The plugin follows a modern PHP architecture with PSR-4 autoloading (no Composer required). All PHP code is organized in the `app` directory with proper namespacing. The custom autoloader in `app/autoloader.php` handles class loading without requiring Composer.
 
 ### JavaScript
 
@@ -492,7 +493,7 @@ if (!wp_boilerplate_verify_nonce('my_action')) {
 
 ### Plugin Renamer
 
-The plugin includes a simple PHP script that makes it easy to set up a new plugin by renaming all namespaces, prefixes, and constants to match your plugin name:
+The plugin includes a simple PHP script that makes it easy to set up a new plugin by renaming all namespaces, prefixes, and constants to match your plugin name. This script works without requiring any external dependencies:
 
 ```bash
 # Run the renamer script
@@ -504,7 +505,10 @@ This will:
 2. Update all namespaces from `WpBoilerplate` to `YourPluginName`
 3. Update all function prefixes from `wp_boilerplate_` to `your_plugin_name_`
 4. Update all constants from `WP_BOILERPLATE_` to `YOUR_PLUGIN_NAME_`
-5. Update composer.json and package.json with your plugin information
+5. Update the custom autoloader to use your namespace
+6. Update composer.json and package.json with your plugin information
+
+The script is designed to work without requiring Composer, making it compatible with the plugin's custom PHP autoloader.
 
 ### UI Components Library
 
@@ -763,11 +767,11 @@ This ensures that only the necessary files are included in the distributed plugi
 
 ### Plugin Renaming Command
 
-The plugin includes a simple command-line tool for renaming the plugin:
+The plugin includes a simple dependency-free command-line tool for renaming the plugin:
 
 ```bash
 # Rename the plugin
-./wp-boilerplate-rename YourPluginName
+php rename-plugin.php YourPluginName
 ```
 
 ### NPM Commands
@@ -793,7 +797,7 @@ npm run hot
 
 ### Composer Commands (Optional)
 
-The plugin can optionally use Composer for PHP dependency management:
+While the plugin uses a custom autoloader and doesn't require Composer for its core functionality, you can optionally use Composer for additional PHP dependencies:
 
 ```bash
 # Install dependencies
