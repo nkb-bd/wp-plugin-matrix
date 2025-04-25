@@ -1,0 +1,38 @@
+# Directories
+.git
+.github
+node_modules
+tests
+vendor
+
+# Development files
+.babelrc
+.editorconfig
+.eslintignore
+.eslintrc.js
+.gitignore
+.prettierrc
+.distignore
+composer.lock
+package-lock.json
+phpcs.xml
+phpunit.xml
+webpack.config.js
+
+# Build tools
+wp-boilerplate-rename
+installer.php
+
+# Documentation
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE.md
+
+# Source files (only include compiled assets)
+resources/
+
+# Misc
+*.log
+*.map
+.DS_Store
+Thumbs.db

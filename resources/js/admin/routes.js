@@ -2,6 +2,7 @@
 import Dashboard from './Pages/Dashboard.vue';
 import Contact from './Pages/Contact.vue';
 import Settings from './Pages/Settings.vue';
+import Demo from './Pages/Demo.vue';
 import NotFound from './Pages/NotFound.vue';
 
 // Define routes
@@ -31,6 +32,15 @@ const routes = [
         meta: {
             title: 'Settings',
             active: 'settings'
+        },
+    },
+    {
+        path: '/demo',
+        name: 'demo',
+        component: Demo,
+        meta: {
+            title: 'Components Demo',
+            active: 'demo'
         },
     },
     {

@@ -10,7 +10,7 @@ use WpBoilerplate\Http\Controllers\AjaxController;
 use WpBoilerplate\Http\Controllers\SettingsController;
 
 /**
- * @var \WpBoilerplate\Http\Router $router
+ * @var \WpBoilerplate\Core\Router $router
  */
 
 // Test endpoint

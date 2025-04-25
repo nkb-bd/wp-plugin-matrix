@@ -22,6 +22,11 @@ export default class AppMixins {
         data.action = 'wp_boilerplate_admin_ajax';
         data.route = route;
 
+        // Add nonce if available
+        if (window.wpBoilerplateAdmin && window.wpBoilerplateAdmin.nonce) {
+            data._wpnonce = window.wpBoilerplateAdmin.nonce;
+        }
+
         if (['PUT', 'PATCH', 'DELETE'].includes(method.toUpperCase())) {
             headers['X-HTTP-Method-Override'] = method;
             method = 'POST';
@@ -59,7 +64,7 @@ export default class AppMixins {
 // Update nonce after successful AJAX requests
 jQuery(document).ajaxSuccess((event, xhr) => {
     const nonce = xhr.getResponseHeader('X-WP-Nonce');
-    if (nonce) {
-        window.WpBoilerplate.rest.nonce = nonce;
+    if (nonce && window.wpBoilerplateAdmin) {
+        window.wpBoilerplateAdmin.nonce = nonce;
     }
 });

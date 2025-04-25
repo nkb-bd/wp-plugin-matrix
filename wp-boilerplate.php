@@ -17,20 +17,19 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Define plugin constants
+// Define plugin constants with unique prefix to avoid conflicts
 define('WP_BOILERPLATE_VERSION', '1.0.0');
 define('WP_BOILERPLATE_FILE', __FILE__);
 define('WP_BOILERPLATE_DIR', plugin_dir_path(__FILE__));
 define('WP_BOILERPLATE_URL', plugin_dir_url(__FILE__));
 define('WP_BOILERPLATE_BASENAME', plugin_basename(__FILE__));
+define('WP_BOILERPLATE_ENV', defined('WP_DEBUG') && WP_DEBUG ? 'development' : 'production');
 
-// Load Composer autoloader if it exists
-if (file_exists(WP_BOILERPLATE_DIR . 'vendor/autoload.php')) {
-    require_once WP_BOILERPLATE_DIR . 'vendor/autoload.php';
-}
+// Load custom autoloader
+require_once WP_BOILERPLATE_DIR . 'app/autoloader.php';
 
-// Load helper functions
-require_once WP_BOILERPLATE_DIR . 'app/Helpers/functions.php';
+// Load bootstrap file
+require_once WP_BOILERPLATE_DIR . 'app/bootstrap.php';
 
 /**
  * Main Plugin Class
@@ -64,21 +63,22 @@ class WpBoilerplatePlugin {
         register_deactivation_hook(WP_BOILERPLATE_FILE, array($this, 'deactivate'));
 
         // Load translations
-        add_action('plugins_loaded', array($this, 'loadTextdomain'));
+        wp_boilerplate_add_action('plugins_loaded', array($this, 'loadTextdomain'));
 
-        // Initialize the modern structure
-        if (class_exists('\WpBoilerplate\Hooks\HookManager')) {
-            $hookManager = new \WpBoilerplate\Hooks\HookManager();
-            $hookManager->registerHooks();
-        }
+        // The App class now handles all initialization
+        // No need to manually initialize hooks here
     }
 
     /**
      * Plugin activation
      */
     public function activate() {
-        // Create database tables if needed
-        // flush_rewrite_rules();
+        // Run database migrations
+        $activator = new \WpBoilerplate\Services\Activator();
+        $activator->migrateDatabases(is_multisite());
+
+        // Flush rewrite rules
+        flush_rewrite_rules();
     }
 
     /**

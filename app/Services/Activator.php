@@ -2,13 +2,30 @@
 
 namespace WpBoilerplate\Services;
 
+use WpBoilerplate\Database\MigrationManager;
+
 /**
  * Class Activator
- * 
+ *
  * Handles plugin activation
  */
 class Activator
 {
+    /**
+     * Migration manager instance
+     *
+     * @var MigrationManager
+     */
+    protected $migrationManager;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->migrationManager = new MigrationManager();
+    }
+
     /**
      * Run migrations
      *
@@ -18,7 +35,7 @@ class Activator
     public function migrateDatabases($networkWide = false)
     {
         global $wpdb;
-        
+
         if ($networkWide) {
             // Retrieve all site IDs from this network
             if (function_exists('get_sites') && function_exists('get_current_network_id')) {
@@ -26,7 +43,7 @@ class Activator
             } else {
                 $siteIds = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs WHERE site_id = $wpdb->siteid;");
             }
-            
+
             // Install the plugin for all these sites
             foreach ($siteIds as $siteId) {
                 switch_to_blog($siteId);
@@ -45,51 +62,28 @@ class Activator
      */
     private function migrate()
     {
-        /*
-        * Database creation commented out,
-        * If you need any database just active this function below
-        * and write your own query at createUserFavorite function
-        */
-        $this->sampleTable();
+        // Run all pending migrations
+        $this->migrationManager->runMigrations();
     }
 
     /**
-     * Create sample table
+     * Rollback migrations
      *
-     * @return void
+     * @param int $steps Number of batches to rollback
+     * @return array
      */
-    public function sampleTable()
+    public function rollback($steps = 1)
     {
-        global $wpdb;
-        $charsetCollate = $wpdb->get_charset_collate();
-        $tableName = $wpdb->prefix . 'wp_boilerplate_user_favorites';
-        
-        $sql = "CREATE TABLE $tableName (
-            id int(10) NOT NULL AUTO_INCREMENT,
-            user_id int(10) NOT NULL,
-            post_id int(10) NOT NULL,
-            created_at timestamp NULL DEFAULT NULL,
-            updated_at timestamp NULL DEFAULT NULL,
-            PRIMARY KEY (id)
-        ) $charsetCollate;";
-
-        $this->runSQL($sql, $tableName);
+        return $this->migrationManager->rollback($steps);
     }
 
     /**
-     * Run SQL query
+     * Reset all migrations
      *
-     * @param string $sql SQL query
-     * @param string $tableName Table name
-     * @return void
+     * @return array
      */
-    private function runSQL($sql, $tableName)
+    public function reset()
     {
-        global $wpdb;
-        
-        if ($wpdb->get_var("SHOW TABLES LIKE '$tableName'") != $tableName) {
-            require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-            dbDelta($sql);
-        }
+        return $this->migrationManager->reset();
     }
 }

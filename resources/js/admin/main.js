@@ -4,6 +4,7 @@ import { createWebHashHistory, createRouter } from 'vue-router';
 import WpBoilerplate from './Bits/AppMixins';
 import ElementPlus from './Bits/elements';
 import App from './App.vue';
+import notification from './Utils/notification';
 
 // Create router instance
 const router = createRouter({
@@ -44,6 +45,7 @@ app.use(router);
 
 // Add global properties
 app.config.globalProperties.appVars = window.wpBoilerplateAdmin;
+app.config.globalProperties.$notification = notification;
 
 // Global error handler
 app.config.errorHandler = (err, vm, info) => {
