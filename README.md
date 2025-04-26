@@ -151,7 +151,7 @@ wp_plugin_matrix_starter_add_action('init', 'my_init_function');
 
 // Register a hook with a class method
 wp_plugin_matrix_starter_add_action('admin_menu', [$this, 'registerMenu']);
-
+```
 
 ### Service Registration
 
@@ -200,9 +200,6 @@ use YourPlugin\Facades\Custom;
 Custom::doSomething();
 ```
 
-### Enhanced Asset Management
-
-The plugin provides a powerful asset management system that handles script and style enqueuing with support for page-specific loading. This makes it easy to load your scripts and styles only where they're needed, improving performance.
 
 ### Facade Pattern
 
@@ -354,7 +351,6 @@ The plugin includes security helpers for CSRF protection, XSS protection, and in
 $sanitized = wp_plugin_matrix_starter_sanitize($_POST['title'], 'text');
 $sanitizedEmail = wp_plugin_matrix_starter_sanitize($_POST['email'], 'email');
 
-
 // Escape output
 <h1><?php echo wp_plugin_matrix_starter_escape($title); ?></h1>
 <a href="<?php echo wp_plugin_matrix_starter_escape($url, 'url'); ?>">Link</a>
@@ -366,10 +362,6 @@ $sanitizedEmail = wp_plugin_matrix_starter_sanitize($_POST['email'], 'email');
 if (!wp_plugin_matrix_starter_verify_nonce('my_action')) {
     wp_die('Security check failed');
 }
-```
-
-
-
 ```
 
 ### Using the Notification System
@@ -444,62 +436,67 @@ export default {
   },
   methods: {
     // REST API example
-    async fetchRestApi() {
+    fetchRestApi() {
       this.loading = true;
       this.error = null;
 
-      try {
-        const nonce = window.wpApiSettings?.nonce || '';
-        const response = await fetch('/wp-json/wp-plugin-matrix-starter/v1/items', {
-          headers: {
-            'Content-Type': 'application/json',
-            'X-WP-Nonce': nonce
-          }
-        });
+      const nonce = window.wpApiSettings?.nonce || '';
 
+      fetch('/wp-json/wp-plugin-matrix-starter/v1/items', {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-WP-Nonce': nonce
+        }
+      })
+      .then(response => {
         if (!response.ok) throw new Error(`API error: ${response.status}`);
-        const result = await response.json();
-
+        return response.json();
+      })
+      .then(result => {
         if (result.success) {
           this.data = result.data;
         } else {
           throw new Error(result.message || 'Unknown error');
         }
-      } catch (err) {
+      })
+      .catch(err => {
         this.error = err.message;
-      } finally {
+      })
+      .finally(() => {
         this.loading = false;
-      }
+      });
     },
 
     // AJAX action example
-    async fetchAjax() {
+    fetchAjax() {
       this.loading = true;
       this.error = null;
 
-      try {
-        const formData = new FormData();
-        formData.append('action', 'get_items');
-        formData.append('nonce', window.my_plugin_vars.nonce);
+      const formData = new FormData();
+      formData.append('action', 'get_items');
+      formData.append('nonce', window.my_plugin_vars.nonce);
 
-        const response = await fetch(window.ajaxurl, {
-          method: 'POST',
-          body: formData
-        });
-
+      fetch(window.ajaxurl, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
         if (!response.ok) throw new Error(`AJAX error: ${response.status}`);
-        const result = await response.json();
-
+        return response.json();
+      })
+      .then(result => {
         if (result.success) {
           this.data = result.data;
         } else {
           throw new Error(result.message || 'Unknown error');
         }
-      } catch (err) {
+      })
+      .catch(err => {
         this.error = err.message;
-      } finally {
+      })
+      .finally(() => {
         this.loading = false;
-      }
+      });
     }
   }
 };
@@ -512,14 +509,12 @@ The plugin includes a `.distignore` file that helps with creating clean distribu
 
 ```bash
 # Create a distribution-ready plugin zip
-npm run dist-archive
+wp dist-archive .
 ```
 
-This command uses the `wp dist-archive` command to instantly build a clean plugin zip file, excluding development files like `.git`, `node_modules`, source files, and configuration files. The resulting zip is lightweight and ready for distribution.
+This command instantly builds a clean plugin zip file, excluding development files like `.git`, `node_modules`, source files, and configuration files based on your `.distignore` file. The resulting zip is lightweight and ready for distribution.
 
 ## Available Commands
-
-
 
 ### NPM Commands
 
@@ -566,42 +561,6 @@ $router->route('GET', 'custom-endpoint', function($request) {
 $router->route('POST', 'custom-data', [new \WPPluginMatrixStarter\Http\Controllers\CustomController(), 'store'], [
     'edit_posts' // Required capability
 ]);
-```
-
-Then create your controller:
-
-```php
-<?php
-
-namespace WPPluginMatrixStarter\Http\Controllers;
-
-class CustomController
-{
-    /**
-     * Store custom data
-     *
-     * @param \WP_REST_Request $request
-     * @return array
-     */
-    public function store($request)
-    {
-        $data = $request->get_params();
-
-        // Validate data
-        if (empty($data['title'])) {
-            return new \WP_Error('missing_title', 'Title is required', ['status' => 400]);
-        }
-
-        // Process data
-        // ...
-
-        return [
-            'success' => true,
-            'message' => 'Data stored successfully',
-            'data' => $data
-        ];
-    }
-}
 ```
 
 
