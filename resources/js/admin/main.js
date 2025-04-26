@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import routes from './routes';
 import { createWebHashHistory, createRouter } from 'vue-router';
-import WpBoilerplate from './Bits/AppMixins';
+import WPPluginMatrixBoilerPlate from './Bits/AppMixins';
 import ElementPlus from './Bits/elements';
 import App from './App.vue';
 import notification from './Utils/notification';
@@ -12,8 +12,8 @@ const router = createRouter({
     routes
 });
 
-// Initialize WpBoilerplate
-const framework = new WpBoilerplate();
+// Initialize WPPluginMatrixBoilerPlate
+const framework = new WPPluginMatrixBoilerPlate();
 
 // Create the Vue 3 app instance with our App component
 const app = createApp(App);
@@ -44,7 +44,7 @@ app.use(ElementPlus);
 app.use(router);
 
 // Add global properties
-app.config.globalProperties.appVars = window.wpBoilerplateAdmin;
+app.config.globalProperties.appVars = window.wpPluginMatrixBoilerPlateAdmin;
 app.config.globalProperties.$notification = notification;
 
 // Global error handler
@@ -60,9 +60,9 @@ router.beforeEach((to, from, next) => {
 
     // Update document title
     if (to.meta.title) {
-        document.title = `${to.meta.title} - WP Boilerplate`;
+        document.title = `${to.meta.title} - WP Plugin Matrix BoilerPlate`;
     } else {
-        document.title = 'WP Boilerplate';
+        document.title = 'WP Plugin Matrix BoilerPlate';
     }
 
     next();
@@ -75,12 +75,12 @@ router.afterEach((to) => {
 
     // Update active menu item
     const active = to.meta.active;
-    jQuery('.wp_boilerplate_menu_item').removeClass('active');
+    jQuery('.wp_plugin_matrix_boiler_plate_menu_item').removeClass('active');
 
     if (active) {
-        jQuery(`.wp_boilerplate_main-menu-items li[data-key=${active}]`).addClass('active');
+        jQuery(`.wp_plugin_matrix_boiler_plate_main-menu-items li[data-key=${active}]`).addClass('active');
     }
 });
 
 // Mount the app
-window.WpBoilerplateApp = app.mount('#wp_boilerplate_app');
+window.WPPluginMatrixBoilerPlateApp = app.mount('#wp_plugin_matrix_boiler_plate_app');

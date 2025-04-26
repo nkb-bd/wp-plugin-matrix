@@ -1,13 +1,13 @@
 <?php
 
-namespace WpBoilerplate\Hooks;
+namespace WPPluginMatrixBoilerPlate\Hooks;
 
-use WpBoilerplate\Facades\Logger;
-use WpBoilerplate\Hooks\Handlers\AdminHandler;
-use WpBoilerplate\Hooks\Handlers\AjaxHandler;
-use WpBoilerplate\Hooks\Handlers\ApiHandler;
-use WpBoilerplate\Hooks\Handlers\AssetHandler;
-use WpBoilerplate\Hooks\Handlers\ShortcodeHandler;
+use WPPluginMatrixBoilerPlate\Facades\Logger;
+use WPPluginMatrixBoilerPlate\Hooks\Handlers\AdminHandler;
+use WPPluginMatrixBoilerPlate\Hooks\Handlers\AjaxHandler;
+use WPPluginMatrixBoilerPlate\Hooks\Handlers\ApiHandler;
+use WPPluginMatrixBoilerPlate\Hooks\Handlers\AssetHandler;
+use WPPluginMatrixBoilerPlate\Hooks\Handlers\ShortcodeHandler;
 
 /**
  * HookManager class
@@ -38,14 +38,14 @@ class HookManager
 
         foreach ($handlers as $name => $handler) {
             // Track when each handler is registered
-            if (class_exists('\WpBoilerplate\Core\Debug')) {
-                \WpBoilerplate\Core\Debug::addToSequence("HookManager: Registering {$name} handler", microtime(true));
+            if (class_exists('\WPPluginMatrixBoilerPlate\Core\Debug')) {
+                \WPPluginMatrixBoilerPlate\Core\Debug::addToSequence("HookManager: Registering {$name} handler", microtime(true));
             }
 
             $handler->register();
 
-            if (class_exists('\WpBoilerplate\Core\Debug')) {
-                \WpBoilerplate\Core\Debug::addToSequence("HookManager: {$name} handler registered", microtime(true));
+            if (class_exists('\WPPluginMatrixBoilerPlate\Core\Debug')) {
+                \WPPluginMatrixBoilerPlate\Core\Debug::addToSequence("HookManager: {$name} handler registered", microtime(true));
             }
         }
 

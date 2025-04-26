@@ -6,10 +6,10 @@
  * This file defines all REST API routes for the plugin.
  */
 
-use WpBoilerplate\Http\Controllers\SettingsController;
+use WPPluginMatrixBoilerPlate\Http\Controllers\SettingsController;
 
 /**
- * @var \WpBoilerplate\Core\Router $router
+ * @var \WPPluginMatrixBoilerPlate\Core\Router $router
  */
 
 // Settings endpoints

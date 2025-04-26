@@ -11,21 +11,21 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
-<div class="wp-boilerplate-shortcode">
+<div class="wp-plugin-matrix-boiler-plate-shortcode">
     <?php if ($atts['show_title'] === 'yes'): ?>
-        <h3 class="wp-boilerplate-shortcode-title"><?php echo esc_html($atts['title']); ?></h3>
+        <h3 class="wp-plugin-matrix-boiler-plate-shortcode-title"><?php echo esc_html($atts['title']); ?></h3>
     <?php endif; ?>
     
-    <div class="wp-boilerplate-shortcode-content">
+    <div class="wp-plugin-matrix-boiler-plate-shortcode-content">
         <?php if ($content): ?>
             <?php echo wp_kses_post($content); ?>
         <?php else: ?>
-            <p><?php _e('This is a sample shortcode from WP Boilerplate.', 'wp-boilerplate'); ?></p>
+            <p><?php _e('This is a sample shortcode from WP Plugin Matrix BoilerPlate.', 'wp-plugin-matrix-boiler-plate'); ?></p>
         <?php endif; ?>
     </div>
 </div>
 <style>
-    .wp-boilerplate-shortcode {
+    .wp-plugin-matrix-boiler-plate-shortcode {
         background-color: #f9f9f9;
         border: 1px solid #ddd;
         padding: 20px;
@@ -33,14 +33,14 @@ if (!defined('ABSPATH')) {
         border-radius: 4px;
     }
     
-    .wp-boilerplate-shortcode-title {
+    .wp-plugin-matrix-boiler-plate-shortcode-title {
         margin-top: 0;
         margin-bottom: 15px;
         font-size: 18px;
         color: #2271b1;
     }
     
-    .wp-boilerplate-shortcode-content {
+    .wp-plugin-matrix-boiler-plate-shortcode-content {
         font-size: 14px;
         line-height: 1.5;
     }

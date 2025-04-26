@@ -1,8 +1,8 @@
 <?php
 
-namespace WpBoilerplate\Hooks\Handlers;
+namespace WPPluginMatrixBoilerPlate\Hooks\Handlers;
 
-use WpBoilerplate\Admin\AdminMenu;
+use WPPluginMatrixBoilerPlate\Admin\AdminMenu;
 
 /**
  * AdminHandler class
@@ -37,7 +37,7 @@ class AdminHandler
         add_action('admin_menu', [$this->adminMenu, 'registerMenuPages']);
 
         // Register demo page
-        $demoPage = new \WpBoilerplate\Admin\DemoPage();
+        $demoPage = new \WPPluginMatrixBoilerPlate\Admin\DemoPage();
         $demoPage->register();
 
         // Disable update nag on plugin pages
@@ -54,8 +54,8 @@ class AdminHandler
     public function disableUpdateNag()
     {
         $disablePages = [
-            'wp-boilerplate',
-            'wp-boilerplate-demo',
+            'wp-plugin-matrix-boiler-plate',
+            'wp-plugin-matrix-boiler-plate-demo',
         ];
 
         if (isset($_GET['page']) && in_array($_GET['page'], $disablePages)) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * Enhanced Asset Manager
@@ -32,7 +32,7 @@ class Asset
      *
      * @var string
      */
-    protected $pluginSlug = 'wp-boilerplate';
+    protected $pluginSlug = 'wp-plugin-matrix-boiler-plate';
 
     /**
      * Constructor
@@ -52,7 +52,7 @@ class Asset
      */
     public function url($path)
     {
-        return WP_BOILERPLATE_URL . 'dist/' . ltrim($path, '/');
+        return WP_PLUGIN_MATRIX_BOILER_PLATE_URL . 'dist/' . ltrim($path, '/');
     }
 
     /**
@@ -73,7 +73,7 @@ class Asset
             'handle' => $handle,
             'path' => $path,
             'deps' => $deps,
-            'ver' => $ver ?: WP_BOILERPLATE_VERSION,
+            'ver' => $ver ?: WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION,
             'inFooter' => $inFooter,
             'context' => $context,
             'condition' => $condition,
@@ -101,7 +101,7 @@ class Asset
             'handle' => $handle,
             'path' => $path,
             'deps' => $deps,
-            'ver' => $ver ?: WP_BOILERPLATE_VERSION,
+            'ver' => $ver ?: WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION,
             'media' => $media,
             'context' => $context,
             'condition' => $condition,

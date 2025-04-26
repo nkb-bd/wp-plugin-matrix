@@ -1,24 +1,24 @@
 <?php
 
 /**
- * Simple PSR-4 Autoloader for WP Boilerplate
+ * Simple PSR-4 Autoloader for WP Plugin Matrix BoilerPlate
  * 
  * This autoloader follows PSR-4 standards to load classes based on their namespace.
  * It replaces the need for Composer's autoloader for this plugin.
  */
 
 /**
- * WP Boilerplate Autoloader
+ * WP Plugin Matrix BoilerPlate Autoloader
  * 
  * @param string $class The fully-qualified class name
  * @return void
  */
-function wp_boilerplate_autoloader($class) {
+function wp_plugin_matrix_boiler_plate_autoloader($class) {
     // Plugin namespace prefix
-    $prefix = 'WpBoilerplate\\';
+    $prefix = 'WPPluginMatrixBoilerPlate\\';
     
     // Base directory for the namespace prefix
-    $base_dir = WP_BOILERPLATE_DIR . 'app/';
+    $base_dir = WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/';
     
     // Check if the class uses the namespace prefix
     $len = strlen($prefix);
@@ -41,7 +41,7 @@ function wp_boilerplate_autoloader($class) {
 }
 
 // Register the autoloader
-spl_autoload_register('wp_boilerplate_autoloader');
+spl_autoload_register('wp_plugin_matrix_boiler_plate_autoloader');
 
 // Load helper functions file
-require_once WP_BOILERPLATE_DIR . 'app/Helpers/functions.php';
+require_once WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Helpers/functions.php';

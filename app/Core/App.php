@@ -1,8 +1,8 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
-use WpBoilerplate\Hooks\HookManager;
+use WPPluginMatrixBoilerPlate\Hooks\HookManager;
 
 /**
  * App class
@@ -84,9 +84,9 @@ class App
     protected function defineEnvironment()
     {
         Debug::addToSequence('App::defineEnvironment', microtime(true));
-        // WP_BOILERPLATE_ENV is now defined in the main plugin file
+        // WP_PLUGIN_MATRIX_BOILER_PLATE_ENV is now defined in the main plugin file
 
-        if (WP_BOILERPLATE_ENV === 'development') {
+        if (WP_PLUGIN_MATRIX_BOILER_PLATE_ENV === 'development') {
             error_reporting(E_ALL);
             ini_set('display_errors', 1);
         }
@@ -162,7 +162,7 @@ class App
     {
         Debug::addToSequence('App::loadHelpers', microtime(true));
 
-        require_once WP_BOILERPLATE_DIR . 'app/Helpers/functions.php';
+        require_once WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Helpers/functions.php';
     }
 
     /**
@@ -188,16 +188,16 @@ class App
         Debug::addToSequence('App::initialize', microtime(true));
 
         // Fire initialization action
-        do_action('wp_boilerplate_init');
+        do_action('wp_plugin_matrix_boiler_plate_init');
 
         // Add debug panel in admin and frontend footers if WP_DEBUG is enabled
         if (defined('WP_DEBUG') && WP_DEBUG) {
             // Use our hook tracking function
-            wp_boilerplate_add_action('admin_footer', [$this, 'renderDebugPanel']);
-            wp_boilerplate_add_action('wp_footer', [$this, 'renderDebugPanel']);
+            wp_plugin_matrix_boiler_plate_add_action('admin_footer', [$this, 'renderDebugPanel']);
+            wp_plugin_matrix_boiler_plate_add_action('wp_footer', [$this, 'renderDebugPanel']);
 
             // Also add it to the login page footer
-            wp_boilerplate_add_action('login_footer', [$this, 'renderDebugPanel']);
+            wp_plugin_matrix_boiler_plate_add_action('login_footer', [$this, 'renderDebugPanel']);
         }
     }
 
@@ -221,18 +221,18 @@ class App
         Debug::addToSequence('App::renderDebugPanel', microtime(true));
 
         // Check if debug panel is disabled via cookie
-        $debug_panel_hidden = isset($_COOKIE['wp_boilerplate_debug_hidden']) && $_COOKIE['wp_boilerplate_debug_hidden'] === 'true';
+        $debug_panel_hidden = isset($_COOKIE['wp_plugin_matrix_boiler_plate_debug_hidden']) && $_COOKIE['wp_plugin_matrix_boiler_plate_debug_hidden'] === 'true';
 
         // Add toggle button
         echo '<div style="position: fixed; bottom: 10px; right: 10px; z-index: 99999;">';
-        echo '<button id="wp-boilerplate-debug-toggle" style="background-color: #0073aa; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">';
+        echo '<button id="wp-plugin-matrix-boiler-plate-debug-toggle" style="background-color: #0073aa; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">';
         echo $debug_panel_hidden ? 'Show Debug Panel' : 'Hide Debug Panel';
         echo '</button>';
         echo '</div>';
 
         // Add a wrapper with some basic styling
-        echo '<div id="wp-boilerplate-debug-panel" style="margin: 20px auto; padding: 20px; border: 1px solid #ccc; background-color: #f8f8f8; font-family: monospace; font-size: 12px; line-height: 1.5; color: #333; max-width: 80%; overflow: auto; ' . ($debug_panel_hidden ? 'display: none;' : '') . '">';
-        echo '<h2 style="margin-top: 0;">WP Boilerplate Debug Panel</h2>';
+        echo '<div id="wp-plugin-matrix-boiler-plate-debug-panel" style="margin: 20px auto; padding: 20px; border: 1px solid #ccc; background-color: #f8f8f8; font-family: monospace; font-size: 12px; line-height: 1.5; color: #333; max-width: 80%; overflow: auto; ' . ($debug_panel_hidden ? 'display: none;' : '') . '">';
+        echo '<h2 style="margin-top: 0;">WP Plugin Matrix BoilerPlate Debug Panel</h2>';
 
         // Dump the debug info
         Debug::dump();
@@ -241,14 +241,14 @@ class App
 
         // Add JavaScript to toggle the panel
         echo '<script>
-            document.getElementById("wp-boilerplate-debug-toggle").addEventListener("click", function() {
-                var panel = document.getElementById("wp-boilerplate-debug-panel");
+            document.getElementById("wp-plugin-matrix-boiler-plate-debug-toggle").addEventListener("click", function() {
+                var panel = document.getElementById("wp-plugin-matrix-boiler-plate-debug-panel");
                 var isHidden = panel.style.display === "none";
                 panel.style.display = isHidden ? "block" : "none";
                 this.textContent = isHidden ? "Hide Debug Panel" : "Show Debug Panel";
 
                 // Set cookie to remember state
-                document.cookie = "wp_boilerplate_debug_hidden=" + (!isHidden) + "; path=/; max-age=86400";
+                document.cookie = "wp_plugin_matrix_boiler_plate_debug_hidden=" + (!isHidden) + "; path=/; max-age=86400";
             });
         </script>';
 

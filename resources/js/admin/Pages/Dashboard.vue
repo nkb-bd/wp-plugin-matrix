@@ -3,11 +3,11 @@
     <h1 class="page-title">Dashboard</h1>
 
     <div class="section">
-      <h2 class="section-title">Welcome to WP Boilerplate</h2>
+      <h2 class="section-title">Welcome to WP Plugin Matrix BoilerPlate</h2>
 
       <el-card class="mb-4">
         <div class="p-4">
-          <h3 class="text-xl font-medium mb-2">Modern WordPress Plugin Boilerplate</h3>
+          <h3 class="text-xl font-medium mb-2">Modern WordPress Plugin Matrix BoilerPlate</h3>
           <p class="mb-4">A modern WordPress plugin boilerplate with Vue.js, Tailwind CSS, and Laravel Mix, following PSR-4 autoloading and modern PHP practices.</p>
 
           <div class="flex flex-wrap gap-2 mb-4">

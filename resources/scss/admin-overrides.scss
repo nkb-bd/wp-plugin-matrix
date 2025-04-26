@@ -6,7 +6,7 @@
  */
 
 // Target the plugin's admin page container to scope these overrides
-.wp-boilerplate-admin-page {
+.wp-plugin-matrix-boiler-plate-admin-page {
   // Reset input styles that conflict with Element Plus
   input[type="text"],
   input[type="password"],
@@ -70,7 +70,7 @@
 }
 
 // Global overrides for WordPress admin (use with caution)
-body.wp-admin.toplevel_page_wp-boilerplate {
+body.wp-admin.toplevel_page_wp-plugin-matrix-boiler-plate {
   // Override specific WordPress styles that might leak into the Vue app
   #wpcontent {
     .el-input__inner,

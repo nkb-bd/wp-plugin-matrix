@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * Config class
@@ -24,7 +24,7 @@ class Config
      */
     public static function load($file)
     {
-        $filePath = WP_BOILERPLATE_DIR . 'app/Config/' . $file . '.php';
+        $filePath = WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Config/' . $file . '.php';
         
         if (file_exists($filePath)) {
             $config = require $filePath;

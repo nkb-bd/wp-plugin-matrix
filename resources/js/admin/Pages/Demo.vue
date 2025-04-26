@@ -4,7 +4,7 @@
       <template #header>
         <div class="card-header">
           <h1>Components & Commands Demo</h1>
-          <p>This page demonstrates the UI components and commands available in the WP Boilerplate plugin.</p>
+          <p>This page demonstrates the UI components and commands available in the WP Plugin Matrix Starter plugin.</p>
         </div>
       </template>
 
@@ -124,7 +124,7 @@
 
           <FileUploader
             v-model="uploadedFiles"
-            action="/wp-admin/admin-ajax.php?action=wp_boilerplate_admin_ajax&route=upload"
+            action="/wp-admin/admin-ajax.php?action=wp_plugin_matrix_starter_admin_ajax&route=upload"
             :headers="{ 'X-WP-Nonce': wpBoilerplateAdmin.nonce }"
             :multiple="true"
             :limit="5"
@@ -171,34 +171,34 @@
 
         <el-tab-pane label="Commands" name="commands">
           <h2>Available Commands</h2>
-          <p>This tab demonstrates the various commands available in the WP Boilerplate plugin.</p>
+          <p>This tab demonstrates the various commands available in the WP Plugin Matrix Starter plugin.</p>
 
           <el-collapse accordion>
             <el-collapse-item title="WP-CLI Commands" name="wp-cli">
               <div class="command-section">
                 <h3>Database Migration Commands</h3>
                 <div class="command-item">
-                  <code>wp wp-boilerplate migrate</code>
+                  <code>wp wp-plugin-matrix-starter migrate</code>
                   <p>Run all pending migrations</p>
                 </div>
                 <div class="command-item">
-                  <code>wp wp-boilerplate migrate:rollback</code>
+                  <code>wp wp-plugin-matrix-starter migrate:rollback</code>
                   <p>Rollback the last batch of migrations</p>
                 </div>
                 <div class="command-item">
-                  <code>wp wp-boilerplate migrate:rollback --steps=3</code>
+                  <code>wp wp-plugin-matrix-starter migrate:rollback --steps=3</code>
                   <p>Rollback multiple batches</p>
                 </div>
                 <div class="command-item">
-                  <code>wp wp-boilerplate migrate:reset</code>
+                  <code>wp wp-plugin-matrix-starter migrate:reset</code>
                   <p>Reset all migrations</p>
                 </div>
                 <div class="command-item">
-                  <code>wp wp-boilerplate migrate:make create_custom_table --table=custom_table</code>
+                  <code>wp wp-plugin-matrix-starter migrate:make create_custom_table --table=custom_table</code>
                   <p>Create a new migration</p>
                 </div>
                 <div class="command-item">
-                  <code>wp wp-boilerplate migrate:status</code>
+                  <code>wp wp-plugin-matrix-starter migrate:status</code>
                   <p>Show migration status</p>
                 </div>
               </div>

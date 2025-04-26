@@ -1,6 +1,6 @@
 export default class AppMixins {
     constructor() {
-        this.ajaxUrl = window.wpBoilerplateAdmin.ajaxurl;
+        this.ajaxUrl = window.wpPluginMatrixBoilerPlateAdmin.ajaxurl;
     }
 
     extendVueConstructor(app) {
@@ -19,12 +19,12 @@ export default class AppMixins {
         const url = `${this.ajaxUrl}`;
         const headers = {};
 
-        data.action = 'wp_boilerplate_admin_ajax';
+        data.action = 'wp_plugin_matrix_boiler_plate_admin_ajax';
         data.route = route;
 
         // Add nonce if available
-        if (window.wpBoilerplateAdmin && window.wpBoilerplateAdmin.nonce) {
-            data._wpnonce = window.wpBoilerplateAdmin.nonce;
+        if (window.wpPluginMatrixBoilerPlateAdmin && window.wpPluginMatrixBoilerPlateAdmin.nonce) {
+            data._wpnonce = window.wpPluginMatrixBoilerPlateAdmin.nonce;
         }
 
         if (['PUT', 'PATCH', 'DELETE'].includes(method.toUpperCase())) {
@@ -32,11 +32,16 @@ export default class AppMixins {
             method = 'POST';
         }
 
-        return window.jQuery.ajax({
-            url,
-            type: method,
-            data,
-            headers
+        // Wrap jQuery AJAX in a Promise to ensure it has finally() method
+        return new Promise((resolve, reject) => {
+            window.jQuery.ajax({
+                url,
+                type: method,
+                data,
+                headers,
+                success: (response) => resolve(response),
+                error: (xhr, status, error) => reject({ xhr, status, error })
+            });
         });
     }
 
@@ -64,7 +69,7 @@ export default class AppMixins {
 // Update nonce after successful AJAX requests
 jQuery(document).ajaxSuccess((event, xhr) => {
     const nonce = xhr.getResponseHeader('X-WP-Nonce');
-    if (nonce && window.wpBoilerplateAdmin) {
-        window.wpBoilerplateAdmin.nonce = nonce;
+    if (nonce && window.wpPluginMatrixBoilerPlateAdmin) {
+        window.wpPluginMatrixBoilerPlateAdmin.nonce = nonce;
     }
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Http\Controllers;
+namespace WPPluginMatrixBoilerPlate\Http\Controllers;
 
 /**
  * Class AjaxController

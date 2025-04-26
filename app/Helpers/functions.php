@@ -7,14 +7,14 @@
  * You can use either the functions or the facades, depending on your preference.
  */
 
-use WpBoilerplate\Facades\Asset;
-use WpBoilerplate\Facades\Cache;
-use WpBoilerplate\Facades\Config;
-use WpBoilerplate\Facades\Logger;
-use WpBoilerplate\Facades\Security;
-use WpBoilerplate\Facades\View;
+use WPPluginMatrixBoilerPlate\Facades\Asset;
+use WPPluginMatrixBoilerPlate\Facades\Cache;
+use WPPluginMatrixBoilerPlate\Facades\Config;
+use WPPluginMatrixBoilerPlate\Facades\Logger;
+use WPPluginMatrixBoilerPlate\Facades\Security;
+use WPPluginMatrixBoilerPlate\Facades\View;
 
-if (!function_exists('wp_boilerplate_get_avatar')) {
+if (!function_exists('wp_plugin_matrix_boiler_plate_get_avatar')) {
     /**
      * Get Gravatar URL by Email
      *
@@ -22,11 +22,11 @@ if (!function_exists('wp_boilerplate_get_avatar')) {
      * @param int $size Size of the avatar
      * @return string Gravatar URL
      */
-    function wp_boilerplate_get_avatar($email, $size)
+    function wp_plugin_matrix_boiler_plate_get_avatar($email, $size)
     {
         $hash = md5(strtolower(trim($email)));
 
-        return apply_filters('wp_boilerplate_get_avatar',
+        return apply_filters('wp_plugin_matrix_boiler_plate_get_avatar',
             "https://www.gravatar.com/avatar/{$hash}?s={$size}&d=mm&r=g",
             $email
         );
@@ -39,8 +39,8 @@ if (!function_exists('wp_boilerplate_get_avatar')) {
  * @param string $path Asset path
  * @return string Full URL to the asset
  */
-if (!function_exists('wp_boilerplate_asset')) {
-    function wp_boilerplate_asset($path)
+if (!function_exists('wp_plugin_matrix_boiler_plate_asset')) {
+    function wp_plugin_matrix_boiler_plate_asset($path)
     {
         return Asset::url($path);
     }
@@ -54,8 +54,8 @@ if (!function_exists('wp_boilerplate_asset')) {
  * @param bool $return Whether to return the view or echo it
  * @return string|void
  */
-if (!function_exists('wp_boilerplate_view')) {
-    function wp_boilerplate_view($view, $data = [], $return = false)
+if (!function_exists('wp_plugin_matrix_boiler_plate_view')) {
+    function wp_plugin_matrix_boiler_plate_view($view, $data = [], $return = false)
     {
         return View::render($view, $data, $return);
     }
@@ -64,12 +64,12 @@ if (!function_exists('wp_boilerplate_view')) {
 /**
  * Get cache instance
  *
- * @return \WpBoilerplate\Core\Cache
+ * @return \WPPluginMatrixBoilerPlate\Core\Cache
  */
-if (!function_exists('wp_boilerplate_cache')) {
-    function wp_boilerplate_cache()
+if (!function_exists('wp_plugin_matrix_boiler_plate_cache')) {
+    function wp_plugin_matrix_boiler_plate_cache()
     {
-        return new \WpBoilerplate\Core\Cache();
+        return new \WPPluginMatrixBoilerPlate\Core\Cache();
     }
 }
 
@@ -80,8 +80,8 @@ if (!function_exists('wp_boilerplate_cache')) {
  * @param mixed $default Default value if cache is not found
  * @return mixed
  */
-if (!function_exists('wp_boilerplate_cache_get')) {
-    function wp_boilerplate_cache_get($key, $default = null)
+if (!function_exists('wp_plugin_matrix_boiler_plate_cache_get')) {
+    function wp_plugin_matrix_boiler_plate_cache_get($key, $default = null)
     {
         return Cache::get($key, $default);
     }
@@ -95,8 +95,8 @@ if (!function_exists('wp_boilerplate_cache_get')) {
  * @param int|null $expiration Expiration time in seconds
  * @return bool
  */
-if (!function_exists('wp_boilerplate_cache_set')) {
-    function wp_boilerplate_cache_set($key, $value, $expiration = null)
+if (!function_exists('wp_plugin_matrix_boiler_plate_cache_set')) {
+    function wp_plugin_matrix_boiler_plate_cache_set($key, $value, $expiration = null)
     {
         return Cache::set($key, $value, $expiration);
     }
@@ -110,8 +110,8 @@ if (!function_exists('wp_boilerplate_cache_set')) {
  * @param callable $callback Callback to generate the value
  * @return mixed
  */
-if (!function_exists('wp_boilerplate_cache_remember')) {
-    function wp_boilerplate_cache_remember($key, $expiration, $callback)
+if (!function_exists('wp_plugin_matrix_boiler_plate_cache_remember')) {
+    function wp_plugin_matrix_boiler_plate_cache_remember($key, $expiration, $callback)
     {
         return Cache::remember($key, $expiration, $callback);
     }
@@ -123,8 +123,8 @@ if (!function_exists('wp_boilerplate_cache_remember')) {
  * @param string $key Cache key
  * @return bool
  */
-if (!function_exists('wp_boilerplate_cache_delete')) {
-    function wp_boilerplate_cache_delete($key)
+if (!function_exists('wp_plugin_matrix_boiler_plate_cache_delete')) {
+    function wp_plugin_matrix_boiler_plate_cache_delete($key)
     {
         return Cache::delete($key);
     }
@@ -137,8 +137,8 @@ if (!function_exists('wp_boilerplate_cache_delete')) {
  * @param string $type Sanitization type
  * @return mixed
  */
-if (!function_exists('wp_boilerplate_sanitize')) {
-    function wp_boilerplate_sanitize($input, $type = 'text')
+if (!function_exists('wp_plugin_matrix_boiler_plate_sanitize')) {
+    function wp_plugin_matrix_boiler_plate_sanitize($input, $type = 'text')
     {
         return Security::sanitize($input, $type);
     }
@@ -151,8 +151,8 @@ if (!function_exists('wp_boilerplate_sanitize')) {
  * @param string $type Escaping type
  * @return mixed
  */
-if (!function_exists('wp_boilerplate_escape')) {
-    function wp_boilerplate_escape($output, $type = 'html')
+if (!function_exists('wp_plugin_matrix_boiler_plate_escape')) {
+    function wp_plugin_matrix_boiler_plate_escape($output, $type = 'html')
     {
         return Security::escape($output, $type);
     }
@@ -165,8 +165,8 @@ if (!function_exists('wp_boilerplate_escape')) {
  * @param string $nonce Nonce value
  * @return bool
  */
-if (!function_exists('wp_boilerplate_verify_nonce')) {
-    function wp_boilerplate_verify_nonce($action, $nonce = null)
+if (!function_exists('wp_plugin_matrix_boiler_plate_verify_nonce')) {
+    function wp_plugin_matrix_boiler_plate_verify_nonce($action, $nonce = null)
     {
         return Security::verifyNonce($action, $nonce);
     }
@@ -178,8 +178,8 @@ if (!function_exists('wp_boilerplate_verify_nonce')) {
  * @param string $action Action name
  * @return string
  */
-if (!function_exists('wp_boilerplate_create_nonce')) {
-    function wp_boilerplate_create_nonce($action)
+if (!function_exists('wp_plugin_matrix_boiler_plate_create_nonce')) {
+    function wp_plugin_matrix_boiler_plate_create_nonce($action)
     {
         return Security::createNonce($action);
     }
@@ -191,8 +191,8 @@ if (!function_exists('wp_boilerplate_create_nonce')) {
  * @param string $action Action name
  * @return string
  */
-if (!function_exists('wp_boilerplate_nonce_field')) {
-    function wp_boilerplate_nonce_field($action)
+if (!function_exists('wp_plugin_matrix_boiler_plate_nonce_field')) {
+    function wp_plugin_matrix_boiler_plate_nonce_field($action)
     {
         return Security::nonceField($action);
     }
@@ -205,8 +205,8 @@ if (!function_exists('wp_boilerplate_nonce_field')) {
  * @param mixed $default Default value if key doesn't exist
  * @return mixed
  */
-if (!function_exists('wp_boilerplate_config')) {
-    function wp_boilerplate_config($key, $default = null)
+if (!function_exists('wp_plugin_matrix_boiler_plate_config')) {
+    function wp_plugin_matrix_boiler_plate_config($key, $default = null)
     {
         return Config::get($key, $default);
     }
@@ -219,8 +219,8 @@ if (!function_exists('wp_boilerplate_config')) {
  * @param string $format Date format
  * @return string
  */
-if (!function_exists('wp_boilerplate_format_date')) {
-    function wp_boilerplate_format_date($date, $format = 'F j, Y')
+if (!function_exists('wp_plugin_matrix_boiler_plate_format_date')) {
+    function wp_plugin_matrix_boiler_plate_format_date($date, $format = 'F j, Y')
     {
         if (is_numeric($date)) {
             $date = date('Y-m-d H:i:s', $date);
@@ -236,10 +236,10 @@ if (!function_exists('wp_boilerplate_format_date')) {
  * @param string $path Path to append to the plugin URL
  * @return string
  */
-if (!function_exists('wp_boilerplate_url')) {
-    function wp_boilerplate_url($path = '')
+if (!function_exists('wp_plugin_matrix_boiler_plate_url')) {
+    function wp_plugin_matrix_boiler_plate_url($path = '')
     {
-        return WP_BOILERPLATE_URL . ltrim($path, '/');
+        return WP_PLUGIN_MATRIX_BOILER_PLATE_URL . ltrim($path, '/');
     }
 }
 
@@ -249,10 +249,10 @@ if (!function_exists('wp_boilerplate_url')) {
  * @param string $path Path to append to the plugin directory
  * @return string
  */
-if (!function_exists('wp_boilerplate_path')) {
-    function wp_boilerplate_path($path = '')
+if (!function_exists('wp_plugin_matrix_boiler_plate_path')) {
+    function wp_plugin_matrix_boiler_plate_path($path = '')
     {
-        return WP_BOILERPLATE_DIR . ltrim($path, '/');
+        return WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . ltrim($path, '/');
     }
 }
 
@@ -264,8 +264,8 @@ if (!function_exists('wp_boilerplate_path')) {
  * @param array $context Additional context
  * @return void
  */
-if (!function_exists('wp_boilerplate_log')) {
-    function wp_boilerplate_log($message, $level = 'info', $context = [])
+if (!function_exists('wp_plugin_matrix_boiler_plate_log')) {
+    function wp_plugin_matrix_boiler_plate_log($message, $level = 'info', $context = [])
     {
         Logger::log($message, $level, $context);
     }
@@ -278,8 +278,8 @@ if (!function_exists('wp_boilerplate_log')) {
  * @param array $context Additional context
  * @return void
  */
-if (!function_exists('wp_boilerplate_debug')) {
-    function wp_boilerplate_debug($message, $context = [])
+if (!function_exists('wp_plugin_matrix_boiler_plate_debug')) {
+    function wp_plugin_matrix_boiler_plate_debug($message, $context = [])
     {
         Logger::debug($message, $context);
     }
@@ -292,8 +292,8 @@ if (!function_exists('wp_boilerplate_debug')) {
  * @param array $context Additional context
  * @return void
  */
-if (!function_exists('wp_boilerplate_info')) {
-    function wp_boilerplate_info($message, $context = [])
+if (!function_exists('wp_plugin_matrix_boiler_plate_info')) {
+    function wp_plugin_matrix_boiler_plate_info($message, $context = [])
     {
         Logger::info($message, $context);
     }
@@ -306,8 +306,8 @@ if (!function_exists('wp_boilerplate_info')) {
  * @param array $context Additional context
  * @return void
  */
-if (!function_exists('wp_boilerplate_warning')) {
-    function wp_boilerplate_warning($message, $context = [])
+if (!function_exists('wp_plugin_matrix_boiler_plate_warning')) {
+    function wp_plugin_matrix_boiler_plate_warning($message, $context = [])
     {
         Logger::warning($message, $context);
     }
@@ -320,8 +320,8 @@ if (!function_exists('wp_boilerplate_warning')) {
  * @param array $context Additional context
  * @return void
  */
-if (!function_exists('wp_boilerplate_error')) {
-    function wp_boilerplate_error($message, $context = [])
+if (!function_exists('wp_plugin_matrix_boiler_plate_error')) {
+    function wp_plugin_matrix_boiler_plate_error($message, $context = [])
     {
         Logger::error($message, $context);
     }
@@ -336,10 +336,10 @@ if (!function_exists('wp_boilerplate_error')) {
  * @param int $accepted_args Number of arguments (default: 1)
  * @return bool
  */
-if (!function_exists('wp_boilerplate_add_action')) {
-    function wp_boilerplate_add_action($hook, $callback, $priority = 10, $accepted_args = 1)
+if (!function_exists('wp_plugin_matrix_boiler_plate_add_action')) {
+    function wp_plugin_matrix_boiler_plate_add_action($hook, $callback, $priority = 10, $accepted_args = 1)
     {
-        return \WpBoilerplate\Core\HookTracker::addAction($hook, $callback, $priority, $accepted_args);
+        return \WPPluginMatrixBoilerPlate\Core\HookTracker::addAction($hook, $callback, $priority, $accepted_args);
     }
 }
 
@@ -352,21 +352,21 @@ if (!function_exists('wp_boilerplate_add_action')) {
  * @param int $accepted_args Number of arguments (default: 1)
  * @return bool
  */
-if (!function_exists('wp_boilerplate_add_filter')) {
-    function wp_boilerplate_add_filter($hook, $callback, $priority = 10, $accepted_args = 1)
+if (!function_exists('wp_plugin_matrix_boiler_plate_add_filter')) {
+    function wp_plugin_matrix_boiler_plate_add_filter($hook, $callback, $priority = 10, $accepted_args = 1)
     {
-        return \WpBoilerplate\Core\HookTracker::addFilter($hook, $callback, $priority, $accepted_args);
+        return \WPPluginMatrixBoilerPlate\Core\HookTracker::addFilter($hook, $callback, $priority, $accepted_args);
     }
 }
 
 /**
  * Get the App instance
  *
- * @return \WpBoilerplate\Core\App
+ * @return \WPPluginMatrixBoilerPlate\Core\App
  */
-if (!function_exists('wp_boilerplate_app')) {
-    function wp_boilerplate_app()
+if (!function_exists('wp_plugin_matrix_boiler_plate_app')) {
+    function wp_plugin_matrix_boiler_plate_app()
     {
-        return \WpBoilerplate\Core\App::getInstance();
+        return \WPPluginMatrixBoilerPlate\Core\App::getInstance();
     }
 }

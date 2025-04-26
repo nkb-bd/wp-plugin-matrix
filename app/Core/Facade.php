@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * Base Facade class
@@ -42,8 +42,8 @@ abstract class Facade
 		static::$services[$name] = $concrete;
 
 		// Log for debugging
-		if (class_exists('\WpBoilerplate\Core\Debug')) {
-			\WpBoilerplate\Core\Debug::registerFacade($name, is_object($concrete) ? get_class($concrete) : gettype($concrete));
+		if (class_exists('\WPPluginMatrixBoilerPlate\Core\Debug')) {
+			\WPPluginMatrixBoilerPlate\Core\Debug::registerFacade($name, is_object($concrete) ? get_class($concrete) : gettype($concrete));
 		}
 	}
 

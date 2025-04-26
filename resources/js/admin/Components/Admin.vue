@@ -84,10 +84,10 @@ export default {
             this.loading = false;
 
             // Log additional debug info
-            if (window.wpBoilerplateAdmin && window.wpBoilerplateAdmin.is_dev) {
+            if (window.wPPluginMatrixStarterAdmin && window.wPPluginMatrixStarterAdmin.is_dev) {
               console.log('Debug info:', {
-                ajaxUrl: window.wpBoilerplateAdmin.ajaxurl,
-                nonce: window.wpBoilerplateAdmin.nonce ? 'Present' : 'Missing',
+                ajaxUrl: window.wPPluginMatrixStarterAdmin.ajaxurl,
+                nonce: window.wPPluginMatrixStarterAdmin.nonce ? 'Present' : 'Missing',
                 error: error
               });
             }

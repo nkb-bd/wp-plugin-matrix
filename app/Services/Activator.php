@@ -1,8 +1,8 @@
 <?php
 
-namespace WpBoilerplate\Services;
+namespace WPPluginMatrixBoilerPlate\Services;
 
-use WpBoilerplate\Database\MigrationManager;
+use WPPluginMatrixBoilerPlate\Database\MigrationManager;
 
 /**
  * Class Activator

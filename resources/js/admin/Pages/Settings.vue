@@ -82,7 +82,7 @@ export default {
       activeTab: 'general',
       settings: {
         general: {
-          title: 'WP Boilerplate',
+          title: 'WP Plugin Matrix Starter',
           debug: false,
           cacheDuration: 1
         },

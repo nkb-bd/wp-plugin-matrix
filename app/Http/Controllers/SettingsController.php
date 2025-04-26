@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Http\Controllers;
+namespace WPPluginMatrixBoilerPlate\Http\Controllers;
 
 /**
  * Class SettingsController
@@ -16,7 +16,7 @@ class SettingsController
      */
     public function get()
     {
-        $settings = get_option('wp_boilerplate_settings', []);
+        $settings = get_option('wp_plugin_matrix_boiler_plate_settings', []);
         
         return wp_send_json_success([
             'settings' => $settings
@@ -32,7 +32,7 @@ class SettingsController
     {
         if (!current_user_can('manage_options')) {
             return wp_send_json_error([
-                'message' => __('You do not have permission to perform this action.', 'wp-boilerplate')
+                'message' => __('You do not have permission to perform this action.', 'wp-plugin-matrix-boiler-plate')
             ], 403);
         }
         
@@ -45,10 +45,10 @@ class SettingsController
             $sanitizedSettings[sanitize_key($key)] = sanitize_text_field($value);
         }
         
-        update_option('wp_boilerplate_settings', $sanitizedSettings);
+        update_option('wp_plugin_matrix_boiler_plate_settings', $sanitizedSettings);
         
         return wp_send_json_success([
-            'message' => __('Settings saved successfully.', 'wp-boilerplate'),
+            'message' => __('Settings saved successfully.', 'wp-plugin-matrix-boiler-plate'),
             'settings' => $sanitizedSettings
         ]);
     }
@@ -61,7 +61,7 @@ class SettingsController
      */
     public function index($request)
     {
-        $settings = get_option('wp_boilerplate_settings', []);
+        $settings = get_option('wp_plugin_matrix_boiler_plate_settings', []);
         
         return rest_ensure_response([
             'settings' => $settings

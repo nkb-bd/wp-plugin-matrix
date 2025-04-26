@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * HookTracker class
@@ -21,7 +21,7 @@ class HookTracker
     public static function addAction($hook, $callback, $priority = 10, $accepted_args = 1)
     {
         // Track the hook registration
-        if (class_exists('\\WpBoilerplate\\Core\\Debug')) {
+        if (class_exists('\\WPPluginMatrixBoilerPlate\\Core\\Debug')) {
             Debug::registerHook($hook, $callback, $priority);
         }
         
@@ -41,7 +41,7 @@ class HookTracker
     public static function addFilter($hook, $callback, $priority = 10, $accepted_args = 1)
     {
         // Track the hook registration
-        if (class_exists('\\WpBoilerplate\\Core\\Debug')) {
+        if (class_exists('\\WPPluginMatrixBoilerPlate\\Core\\Debug')) {
             Debug::registerHook($hook, $callback, $priority);
         }
         

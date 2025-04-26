@@ -6,11 +6,11 @@
  * This file defines all AJAX routes for the plugin.
  */
 
-use WpBoilerplate\Http\Controllers\AjaxController;
-use WpBoilerplate\Http\Controllers\SettingsController;
+use WPPluginMatrixBoilerPlate\Http\Controllers\AjaxController;
+use WPPluginMatrixBoilerPlate\Http\Controllers\SettingsController;
 
 /**
- * @var \WpBoilerplate\Core\Router $router
+ * @var \WPPluginMatrixBoilerPlate\Core\Router $router
  */
 
 // Test endpoint

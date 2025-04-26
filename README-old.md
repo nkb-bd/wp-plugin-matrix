@@ -16,12 +16,12 @@ A modern WordPress plugin boilerplate with Vue.js, Tailwind CSS, and Laravel Mix
 - Debug panel for development
 - Simple plugin renamer script for quick setup and customization (no dependencies required)
 - Advanced UI components library:
-    - Data tables with sorting, filtering, and pagination
-    - Modal dialogs
-    - Notifications system
-    - File uploader with preview
-    - Rich text editor
-    - Drag and drop interface builder
+  - Data tables with sorting, filtering, and pagination
+  - Modal dialogs
+  - Notifications system
+  - File uploader with preview
+  - Rich text editor
+  - Drag and drop interface builder
 
 ## Directory Structure
 
@@ -552,18 +552,18 @@ The plugin includes a comprehensive UI components library for building admin int
 
 ```vue
 <DataTable
-    :data="items"
-    :loading="loading"
-    :filters="[
+  :data="items"
+  :loading="loading"
+  :filters="[
     { name: 'Status', options: [
       { label: 'Active', value: 'status:active' },
       { label: 'Inactive', value: 'status:inactive' }
     ]}
   ]"
 >
-    <el-table-column prop="id" label="ID" sortable />
-    <el-table-column prop="name" label="Name" sortable />
-    <el-table-column prop="status" label="Status" />
+  <el-table-column prop="id" label="ID" sortable />
+  <el-table-column prop="name" label="Name" sortable />
+  <el-table-column prop="status" label="Status" />
 </DataTable>
 ```
 
@@ -571,12 +571,12 @@ The plugin includes a comprehensive UI components library for building admin int
 
 ```vue
 <Modal
-    :visible.sync="modalVisible"
-    title="Confirm Action"
-    @confirm="handleConfirm"
-    @cancel="handleCancel"
+  :visible.sync="modalVisible"
+  title="Confirm Action"
+  @confirm="handleConfirm"
+  @cancel="handleCancel"
 >
-    <p>Are you sure you want to perform this action?</p>
+  <p>Are you sure you want to perform this action?</p>
 </Modal>
 ```
 
@@ -584,12 +584,12 @@ The plugin includes a comprehensive UI components library for building admin int
 
 ```vue
 <FileUploader
-    v-model="files"
-    action="/wp-admin/admin-ajax.php?action=upload_file"
-    :headers="{ 'X-WP-Nonce': nonce }"
-    :multiple="true"
-    :limit="5"
-    accept=".jpg,.jpeg,.png,.gif"
+  v-model="files"
+  action="/wp-admin/admin-ajax.php?action=upload_file"
+  :headers="{ 'X-WP-Nonce': nonce }"
+  :multiple="true"
+  :limit="5"
+  accept=".jpg,.jpeg,.png,.gif"
 />
 ```
 
@@ -597,10 +597,10 @@ The plugin includes a comprehensive UI components library for building admin int
 
 ```vue
 <RichTextEditor
-    v-model="content"
-    placeholder="Start writing..."
-    :height="300"
-    :show-word-count="true"
+  v-model="content"
+  placeholder="Start writing..."
+  :height="300"
+  :show-word-count="true"
 />
 ```
 
@@ -608,8 +608,8 @@ The plugin includes a comprehensive UI components library for building admin int
 
 ```vue
 <InterfaceBuilder
-    v-model="interfaceElements"
-    @save="saveInterface"
+  v-model="interfaceElements"
+  @save="saveInterface"
 />
 ```
 
@@ -637,39 +637,39 @@ The plugin includes a simple notification system for displaying messages, alerts
 import notification from './Utils/notification';
 
 export default {
-    methods: {
-        showSuccess() {
-            notification.success('Operation completed successfully!');
-        },
-        showError() {
-            notification.error('An error occurred');
-        },
-        showWarning() {
-            notification.warning('This action might have consequences');
-        },
-        showInfo() {
-            notification.info('Here is some information');
-        },
-        showToast() {
-            notification.toast('Quick message', 'success');
-        },
-        confirmAction() {
-            notification.confirm('Are you sure?', 'Confirm Action')
-                .then(() => {
-                    // User confirmed
-                    this.performAction();
-                })
-                .catch(() => {
-                    // User canceled
-                });
-        },
-        showAlert() {
-            notification.alert('Important information', 'Alert')
-                .then(() => {
-                    // User acknowledged
-                });
-        }
+  methods: {
+    showSuccess() {
+      notification.success('Operation completed successfully!');
+    },
+    showError() {
+      notification.error('An error occurred');
+    },
+    showWarning() {
+      notification.warning('This action might have consequences');
+    },
+    showInfo() {
+      notification.info('Here is some information');
+    },
+    showToast() {
+      notification.toast('Quick message', 'success');
+    },
+    confirmAction() {
+      notification.confirm('Are you sure?', 'Confirm Action')
+        .then(() => {
+          // User confirmed
+          this.performAction();
+        })
+        .catch(() => {
+          // User canceled
+        });
+    },
+    showAlert() {
+      notification.alert('Important information', 'Alert')
+        .then(() => {
+          // User acknowledged
+        });
     }
+  }
 };
 ```
 
@@ -679,108 +679,108 @@ The plugin makes it easy to interact with WordPress REST API endpoints:
 
 ```js
 <template>
-    <div>
-        <button @click="fetchData" :disabled="loading">Fetch Data</button>
+  <div>
+    <button @click="fetchData" :disabled="loading">Fetch Data</button>
     <div v-if="loading">Loading...</div>
     <div v-if="error" class="error">{{ error }}</div>
     <ul v-if="data.length">
-        <li v-for="item in data" :key="item.id">{{ item.title }}</li>
-</ul>
-</div>
+      <li v-for="item in data" :key="item.id">{{ item.title }}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
-    import { ref } from 'vue';
-    import notification from '../Utils/notification';
+import { ref } from 'vue';
+import notification from '../Utils/notification';
 
-    export default {
-    setup() {
+export default {
+  setup() {
     const data = ref([]);
     const loading = ref(false);
     const error = ref(null);
 
     const fetchData = async () => {
-    loading.value = true;
-    error.value = null;
+      loading.value = true;
+      error.value = null;
 
-    try {
-    // Get the WordPress REST API nonce
-    const nonce = window.wpApiSettings?.nonce || '';
+      try {
+        // Get the WordPress REST API nonce
+        const nonce = window.wpApiSettings?.nonce || '';
 
-    // Make the API request
-    const response = await fetch('/wp-json/wp-plugin-matrix-starter/v1/items', {
-    headers: {
-    'Content-Type': 'application/json',
-    'X-WP-Nonce': nonce
-}
-});
+        // Make the API request
+        const response = await fetch('/wp-json/wp-plugin-matrix-starter/v1/items', {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-WP-Nonce': nonce
+          }
+        });
 
-    if (!response.ok) {
-    throw new Error(`API error: ${response.status}`);
-}
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
 
-    const result = await response.json();
+        const result = await response.json();
 
-    if (result.success) {
-    data.value = result.data;
-    notification.success('Data loaded successfully');
-} else {
-    throw new Error(result.message || 'Unknown error');
-}
-} catch (err) {
-    error.value = err.message;
-    notification.error(`Failed to load data: ${err.message}`);
-} finally {
-    loading.value = false;
-}
-};
+        if (result.success) {
+          data.value = result.data;
+          notification.success('Data loaded successfully');
+        } else {
+          throw new Error(result.message || 'Unknown error');
+        }
+      } catch (err) {
+        error.value = err.message;
+        notification.error(`Failed to load data: ${err.message}`);
+      } finally {
+        loading.value = false;
+      }
+    };
 
     // Example of submitting data to an API endpoint
     const submitData = async (formData) => {
-    loading.value = true;
-    error.value = null;
+      loading.value = true;
+      error.value = null;
 
-    try {
-    const nonce = window.wpApiSettings?.nonce || '';
+      try {
+        const nonce = window.wpApiSettings?.nonce || '';
 
-    const response = await fetch('/wp-json/wp-plugin-matrix-starter/v1/items', {
-    method: 'POST',
-    headers: {
-    'Content-Type': 'application/json',
-    'X-WP-Nonce': nonce
-},
-    body: JSON.stringify(formData)
-});
+        const response = await fetch('/wp-json/wp-plugin-matrix-starter/v1/items', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-WP-Nonce': nonce
+          },
+          body: JSON.stringify(formData)
+        });
 
-    if (!response.ok) {
-    throw new Error(`API error: ${response.status}`);
-}
+        if (!response.ok) {
+          throw new Error(`API error: ${response.status}`);
+        }
 
-    const result = await response.json();
+        const result = await response.json();
 
-    if (result.success) {
-    notification.success('Data saved successfully');
-    return result.data;
-} else {
-    throw new Error(result.message || 'Unknown error');
-}
-} catch (err) {
-    error.value = err.message;
-    notification.error(`Failed to save data: ${err.message}`);
-    throw err;
-} finally {
-    loading.value = false;
-}
-};
+        if (result.success) {
+          notification.success('Data saved successfully');
+          return result.data;
+        } else {
+          throw new Error(result.message || 'Unknown error');
+        }
+      } catch (err) {
+        error.value = err.message;
+        notification.error(`Failed to save data: ${err.message}`);
+        throw err;
+      } finally {
+        loading.value = false;
+      }
+    };
 
     return {
-    data,
-    loading,
-    error,
-    fetchData,
-    submitData
-};
-}
+      data,
+      loading,
+      error,
+      fetchData,
+      submitData
+    };
+  }
 };
 </script>
 ```

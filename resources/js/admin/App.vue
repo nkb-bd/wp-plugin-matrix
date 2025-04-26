@@ -3,7 +3,7 @@
     <div class="main-menu">
       <div class="flex items-center justify-between">
         <div class="flex items-center">
-          <div class="font-bold text-xl mr-4">WP Boilerplate</div>
+          <div class="font-bold text-xl mr-4">WP Plugin Matrix BoilerPlate</div>
           <Navigation />
         </div>
         <div class="text-sm text-gray-500">
@@ -25,7 +25,7 @@ export default {
   },
   data() {
     return {
-      version: window.wpBoilerplateAdmin?.version || '1.0.0'
+      version: window.wpPluginMatrixBoilerPlateAdmin?.version || '1.0.0'
     };
   }
 };

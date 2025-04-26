@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Admin;
+namespace WPPluginMatrixBoilerPlate\Admin;
 
 /**
  * Class AdminMenu
@@ -53,10 +53,10 @@ class AdminMenu
 
         // Add main menu page
         add_menu_page(
-            'WP Boilerplate',
-            'WP Boilerplate',
+            'WP Plugin Matrix - Starter',
+            'WP Plugin Matrix - Starter',
             'manage_options',
-            'wp-boilerplate',
+            'wp-plugin-matrix-boiler-plate',
             [$this, 'renderAdminPage'],
             'dashicons-editor-code',
             25
@@ -83,10 +83,10 @@ class AdminMenu
 
         // Add submenu items
         foreach ($this->menuItems as $slug => $item) {
-            $submenu['wp-boilerplate'][$slug] = [
+            $submenu['wp-plugin-matrix-boiler-plate'][$slug] = [
                 $item['title'],
                 isset($item['capability']) ? $item['capability'] : 'manage_options',
-                'admin.php?page=wp-boilerplate#/' . ($slug === 'dashboard' ? '' : $slug),
+                'admin.php?page=wp-plugin-matrix-boiler-plate#/' . ($slug === 'dashboard' ? '' : $slug),
             ];
         }
     }
@@ -99,15 +99,15 @@ class AdminMenu
     public function renderAdminPage()
     {
 
-        echo '<div class="wp-boilerplate-admin-page" id="wp_boilerplate_app">
+        echo '<div class="wp-plugin-matrix-boiler-plate-admin-page" id="wp_plugin_matrix_boiler_plate_app">
             <div class="main-menu">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                        <div class="font-bold text-xl mr-4">WP Boilerplate</div>
+                        <div class="font-bold text-xl mr-4">WP Plugin Matrix - Starter</div>
                         <!-- Navigation will be rendered by Vue.js -->
                     </div>
                     <div class="text-sm text-gray-500">
-                        v' . WP_BOILERPLATE_VERSION . '
+                        v' . WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION . '
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Hooks\Handlers;
+namespace WPPluginMatrixBoilerPlate\Hooks\Handlers;
 
 /**
  * ApiHandler class
@@ -12,7 +12,7 @@ class ApiHandler
     /**
      * Router instance
      *
-     * @var \WpBoilerplate\Core\Router
+     * @var \WPPluginMatrixBoilerPlate\Core\Router
      */
     protected $router;
 
@@ -37,10 +37,10 @@ class ApiHandler
     public function register()
     {
         // Register REST API routes
-        wp_boilerplate_add_action('rest_api_init', [$this, 'registerRestRoutes']);
+        wp_plugin_matrix_boiler_plate_add_action('rest_api_init', [$this, 'registerRestRoutes']);
 
         // Add custom REST API error handling
-        wp_boilerplate_add_filter('rest_pre_dispatch', [$this, 'handlePreDispatch'], 10, 3);
+        wp_plugin_matrix_boiler_plate_add_filter('rest_pre_dispatch', [$this, 'handlePreDispatch'], 10, 3);
     }
 
     /**
@@ -52,16 +52,16 @@ class ApiHandler
     {
         try {
             // Load routes
-            $this->router = require WP_BOILERPLATE_DIR . 'app/Http/routes.php';
+            $this->router = require WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Http/routes.php';
 
             // Register REST API routes
             $this->router->registerRestRoutes();
 
             // Log registration
-            wp_boilerplate_info('REST API routes registered successfully');
+            wp_plugin_matrix_boiler_plate_info('REST API routes registered successfully');
         } catch (\Exception $e) {
             // Log the error
-            wp_boilerplate_error('Error registering REST API routes', ['error' => $e->getMessage()]);
+            wp_plugin_matrix_boiler_plate_error('Error registering REST API routes', ['error' => $e->getMessage()]);
         }
     }
 
@@ -76,7 +76,7 @@ class ApiHandler
     public function handlePreDispatch($result, $server, $request)
     {
         // Only handle our plugin's routes
-        if (strpos($request->get_route(), '/wp-boilerplate/') === false) {
+        if (strpos($request->get_route(), '/wp-plugin-matrix-boiler-plate/') === false) {
             return $result;
         }
 

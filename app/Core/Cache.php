@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * Cache class
@@ -14,7 +14,7 @@ class Cache
      * 
      * @var string
      */
-    protected $prefix = 'wp_boilerplate_';
+    protected $prefix = 'wp_plugin_matrix_boiler_plate_';
 
     /**
      * Default expiration time in seconds

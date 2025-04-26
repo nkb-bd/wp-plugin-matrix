@@ -5,8 +5,8 @@
  */
 return [
     // Plugin information
-    'name' => 'WP Boilerplate',
-    'version' => WP_BOILERPLATE_VERSION,
+    'name' => 'WP Plugin Matrix BoilerPlate',
+    'version' => WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION,
     'description' => 'A WordPress plugin boilerplate',
     
     // Plugin settings
@@ -17,8 +17,8 @@ return [
     
     // Plugin paths
     'paths' => [
-        'views' => WP_BOILERPLATE_DIR . 'app/Views',
-        'assets' => WP_BOILERPLATE_URL . 'dist',
+        'views' => WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Views',
+        'assets' => WP_PLUGIN_MATRIX_BOILER_PLATE_URL . 'dist',
     ],
     
     // Plugin features

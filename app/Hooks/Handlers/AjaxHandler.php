@@ -1,8 +1,8 @@
 <?php
 
-namespace WpBoilerplate\Hooks\Handlers;
+namespace WPPluginMatrixBoilerPlate\Hooks\Handlers;
 
-use WpBoilerplate\Core\Router;
+use WPPluginMatrixBoilerPlate\Core\Router;
 
 /**
  * AjaxHandler class
@@ -24,7 +24,7 @@ class AjaxHandler
     public function __construct()
     {
         // Load routes
-        $this->router = require WP_BOILERPLATE_DIR . 'app/Http/routes.php';
+        $this->router = require WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Http/routes.php';
     }
 
     /**
@@ -35,10 +35,10 @@ class AjaxHandler
     public function register()
     {
         // Handle AJAX requests for logged-in users
-        add_action('wp_ajax_wp_boilerplate_admin_ajax', [$this, 'handleAjaxRequests']);
+        add_action('wp_ajax_wp_plugin_matrix_boiler_plate_admin_ajax', [$this, 'handleAjaxRequests']);
 
         // Handle AJAX requests for non-logged-in users
-        add_action('wp_ajax_nopriv_wp_boilerplate_admin_ajax', [$this, 'handleAjaxRequests']);
+        add_action('wp_ajax_nopriv_wp_plugin_matrix_boiler_plate_admin_ajax', [$this, 'handleAjaxRequests']);
     }
 
     /**
@@ -55,7 +55,7 @@ class AjaxHandler
                 return;
             }
 
-            if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'wp_boilerplate_nonce')) {
+            if (!wp_verify_nonce($_REQUEST['_wpnonce'], 'wp_plugin_matrix_boiler_plate_nonce')) {
                 wp_send_json_error(['message' => 'Security nonce is invalid. Please refresh the page and try again.'], 403);
                 return;
             }
@@ -73,7 +73,7 @@ class AjaxHandler
                 error_log(sprintf('AJAX request: %s %s', $method, $route));
             }
 
-            do_action('wp_boilerplate/doing_ajax_for_' . $route);
+            do_action('wp_plugin_matrix_boiler_plate/doing_ajax_for_' . $route);
 
             $routes = $this->router->getAjaxRoutes();
 

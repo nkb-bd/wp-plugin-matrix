@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Http\Controllers;
+namespace WPPluginMatrixBoilerPlate\Http\Controllers;
 
 /**
  * Class ShortcodeController
@@ -20,15 +20,15 @@ class ShortcodeController
     {
         // Parse attributes
         $atts = shortcode_atts([
-            'title' => 'WP Boilerplate',
+            'title' => 'WP Plugin Matrix BoilerPlate',
             'show_title' => 'yes',
-        ], $atts, 'wp-boilerplate');
+        ], $atts, 'wp-plugin-matrix-boiler-plate');
         
         // Start output buffering
         ob_start();
         
         // Include the view
-        include WP_BOILERPLATE_DIR . 'app/Views/shortcode.php';
+        include WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Views/shortcode.php';
         
         // Return the buffered content
         return ob_get_clean();

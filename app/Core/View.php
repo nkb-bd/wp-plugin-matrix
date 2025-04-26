@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * View class
@@ -17,7 +17,7 @@ class View
      */
     public function render($view, $data = [], $return = false)
     {
-        $file = WP_BOILERPLATE_DIR . 'app/Views/' . $view . '.php';
+        $file = WP_PLUGIN_MATRIX_BOILER_PLATE_DIR . 'app/Views/' . $view . '.php';
 
         if (!file_exists($file)) {
             return '';

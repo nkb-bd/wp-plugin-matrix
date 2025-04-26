@@ -1,8 +1,8 @@
 <?php
 
-namespace WpBoilerplate\Facades;
+namespace WPPluginMatrixBoilerPlate\Facades;
 
-use WpBoilerplate\Core\Facade;
+use WPPluginMatrixBoilerPlate\Core\Facade;
 
 /**
  * Logger Facade

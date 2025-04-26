@@ -1,8 +1,8 @@
 <?php
 
-namespace WpBoilerplate\Hooks\Handlers;
+namespace WPPluginMatrixBoilerPlate\Hooks\Handlers;
 
-use WpBoilerplate\Http\Controllers\ShortcodeController;
+use WPPluginMatrixBoilerPlate\Http\Controllers\ShortcodeController;
 
 /**
  * ShortcodeHandler class
@@ -19,7 +19,7 @@ class ShortcodeHandler
     public function register()
     {
         // Register shortcodes
-        add_shortcode('wp-boilerplate', [$this, 'renderShortcode']);
+        add_shortcode('wp-plugin-matrix-boiler-plate', [$this, 'renderShortcode']);
     }
     
     /**

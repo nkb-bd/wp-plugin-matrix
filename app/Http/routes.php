@@ -6,10 +6,10 @@
  * This file loads all route files for the plugin.
  */
 
-use WpBoilerplate\Core\Router;
+use WPPluginMatrixBoilerPlate\Core\Router;
 
 // Create router instance
-$router = new Router('wp-boilerplate/v1');
+$router = new Router('wp-plugin-matrix-boiler-plate/v1');
 
 // Load route files
 require_once __DIR__ . '/Routes/api.php';

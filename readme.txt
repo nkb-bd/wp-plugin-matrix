@@ -1,4 +1,4 @@
-=== WP Boilerplate Plugin ===
+=== WP Plugin Matrix BoilerPlate ===
 Contributors: yourname
 Tags: boilerplate, vue, tailwind
 Requires at least: 5.0
@@ -23,7 +23,7 @@ A modern WordPress plugin boilerplate with Vue.js, Tailwind CSS, and Laravel Mix
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/wp-boilerplate` directory, or install the plugin through the WordPress plugins screen directly.
+1. Upload the plugin files to the `/wp-content/plugins/wp-plugin-matrix-starter` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Use the plugin as a starting point for your own development
 

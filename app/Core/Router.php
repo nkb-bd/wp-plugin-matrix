@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Core;
+namespace WPPluginMatrixBoilerPlate\Core;
 
 /**
  * Router class
@@ -28,7 +28,7 @@ class Router
      *
      * @param string $namespace REST API namespace
      */
-    public function __construct($namespace = 'wp-boilerplate/v1')
+    public function __construct($namespace = 'wp-plugin-matrix-boiler-plate/v1')
     {
         $this->namespace = $namespace;
     }

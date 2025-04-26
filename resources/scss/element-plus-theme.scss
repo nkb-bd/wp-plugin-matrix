@@ -154,7 +154,7 @@ $--table-row-hover-background: $light-gray;
 }
 
 // Dark mode support (if enabled in settings)
-.wp-boilerplate-dark-mode {
+.wp-plugin-matrix-starter-dark-mode {
   --el-color-primary: #{lighten($primary-color, 10%)};
   --el-color-success: #{lighten($success-color, 10%)};
   --el-color-warning: #{$warning-color};

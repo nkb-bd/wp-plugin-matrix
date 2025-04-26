@@ -1,7 +1,7 @@
 {
-    "name": "wp-boilerplate",
+    "name": "wp-plugin-matrix-starter",
     "version": "1.0.0",
-    "description": "A modern WordPress boilerplate plugin using Vue.js, Tailwind CSS, and Laravel Mix",
+    "description": "WP Plugin Matrix - Starter - A WordPress plugin",
     "scripts": {
         "dev": "mix",
         "development": "mix",

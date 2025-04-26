@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Model;
+namespace WPPluginMatrixBoilerPlate\Model;
 
 /**
  * Class Snippet
@@ -22,7 +22,7 @@ class DemoModel
     public function __construct()
     {
         global $wpdb;
-        $this->table = $wpdb->prefix . 'wp_boilerplate_user_favorites';
+        $this->table = $wpdb->prefix . 'wp_plugin_matrix_boiler_plate_user_favorites';
     }
     
     /**

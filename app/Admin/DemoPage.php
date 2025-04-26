@@ -1,6 +1,6 @@
 <?php
 
-namespace WpBoilerplate\Admin;
+namespace WPPluginMatrixBoilerPlate\Admin;
 
 /**
  * Demo Page
@@ -23,11 +23,11 @@ class DemoPage
     public function addAdminPage()
     {
         add_submenu_page(
-            'wp-boilerplate', // Parent slug
-            __('Components Demo', 'wp-boilerplate'),
-            __('Components Demo', 'wp-boilerplate'),
+            'wp-plugin-matrix-boiler-plate', // Parent slug
+            __('Components Demo', 'wp-plugin-matrix-boiler-plate'),
+            __('Components Demo', 'wp-plugin-matrix-boiler-plate'),
             'manage_options',
-            'wp-boilerplate-demo',
+            'wp-plugin-matrix-boiler-plate-demo',
             [$this, 'renderPage']
         );
     }
@@ -37,6 +37,6 @@ class DemoPage
      */
     public function renderPage()
     {
-        echo '<div id="wp_boilerplate_demo_page"></div>';
+        echo '<div id="wp_plugin_matrix_boiler_plate_demo_page"></div>';
     }
 }

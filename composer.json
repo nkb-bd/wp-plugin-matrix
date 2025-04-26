@@ -1,6 +1,6 @@
 {
-    "name": "wp-boilerplate/plugin",
-    "description": "A WordPress boilerplate plugin using modern PHP practices",
+    "name": "wp-plugin-matrix-starter/plugin",
+    "description": "WP Plugin Matrix - Starter - A WordPress plugin",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "require": {
@@ -8,7 +8,12 @@
     },
     "autoload": {
         "psr-4": {
-            "WpBoilerplate\\": "app/"
+            "WPPluginMatrixStarter\\": "app/",
+            "WPPluginMatrixBoilerPlate\\": "app/",
+            "MatrixStarter\\": "app/",
+            "TestPlugin\\": "app/",
+            "MyAwesomePlugin\\": "app/",
+            "MyAmazingPlugin\\": "app/"
         },
         "files": [
             "app/Helpers/functions.php"
