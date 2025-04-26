@@ -1,9 +1,9 @@
 <?php
 
-namespace WpBoilerplate\Hooks\Handlers;
+namespace WPPluginMatrixBoilerPlate\Hooks\Handlers;
 
-use WpBoilerplate\Facades\Asset;
-use WpBoilerplate\Facades\Security;
+use WPPluginMatrixBoilerPlate\Facades\Asset;
+use WPPluginMatrixBoilerPlate\Facades\Security;
 
 /**
  * Asset Handler
@@ -39,47 +39,47 @@ class AssetHandler
 
         // Main admin script (Vue.js app)
         Asset::registerScript(
-            'wp-boilerplate-admin',
+            'wp-plugin-matrix-boiler-plate-admin',
             'js/main.js',
             ['jquery', 'wp-element'], // wp-element for React compatibility
-            WP_BOILERPLATE_VERSION,
+            WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION,
             true,
             'admin'
         );
 
         // Admin CSS
         Asset::registerStyle(
-            'wp-boilerplate-admin-css',
+            'wp-plugin-matrix-boiler-plate-admin-css',
             'css/style.css', // Changed from js/main.css to css/style.css
             [],
-            WP_BOILERPLATE_VERSION,
+            WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION,
             'all',
             'admin'
         );
 
         // Localize admin script with data and translations
-        $translatable = apply_filters('wp_boilerplate/admin_translatable_strings', [
-            'hello' => __('Hello', 'wp-boilerplate'),
-            'settings' => __('Settings', 'wp-boilerplate'),
-            'dashboard' => __('Dashboard', 'wp-boilerplate'),
-            'save' => __('Save', 'wp-boilerplate'),
-            'cancel' => __('Cancel', 'wp-boilerplate'),
-            'success' => __('Success', 'wp-boilerplate'),
-            'error' => __('Error', 'wp-boilerplate'),
-            'loading' => __('Loading...', 'wp-boilerplate'),
+        $translatable = apply_filters('wp_plugin_matrix_boiler_plate/admin_translatable_strings', [
+            'hello' => __('Hello', 'wp-plugin-matrix-boiler-plate'),
+            'settings' => __('Settings', 'wp-plugin-matrix-boiler-plate'),
+            'dashboard' => __('Dashboard', 'wp-plugin-matrix-boiler-plate'),
+            'save' => __('Save', 'wp-plugin-matrix-boiler-plate'),
+            'cancel' => __('Cancel', 'wp-plugin-matrix-boiler-plate'),
+            'success' => __('Success', 'wp-plugin-matrix-boiler-plate'),
+            'error' => __('Error', 'wp-plugin-matrix-boiler-plate'),
+            'loading' => __('Loading...', 'wp-plugin-matrix-boiler-plate'),
         ]);
 
         Asset::localizeScript(
-            'wp-boilerplate-admin',
-            'wpBoilerplateAdmin',
+            'wp-plugin-matrix-boiler-plate-admin',
+            'wpPluginMatrixBoilerPlateAdmin',
             [
                 'ajaxurl' => admin_url('admin-ajax.php'),
-                'nonce' => Security::createNonce('wp_boilerplate_nonce'),
+                'nonce' => Security::createNonce('wp_plugin_matrix_boiler_plate_nonce'),
                 'is_dev' => defined('WP_DEBUG') && WP_DEBUG,
-                'plugin_url' => WP_BOILERPLATE_URL,
-                'assets_url' => wp_boilerplate_asset(''),
-                'rest_url' => rest_url('wp-boilerplate/v1'),
-                'version' => WP_BOILERPLATE_VERSION,
+                'plugin_url' => WP_PLUGIN_MATRIX_BOILER_PLATE_URL,
+                'assets_url' => wp_plugin_matrix_boiler_plate_asset(''),
+                'rest_url' => rest_url('wp-plugin-matrix-boiler-plate/v1'),
+                'version' => WP_PLUGIN_MATRIX_BOILER_PLATE_VERSION,
                 'i18n' => $translatable,
             ]
         );
@@ -87,7 +87,7 @@ class AssetHandler
         // ===== FRONTEND ASSETS =====
 
         // Only register frontend assets if needed
-        if (apply_filters('wp_boilerplate/load_frontend_assets', true)) {
+        if (apply_filters('wp_plugin_matrix_boiler_plate/load_frontend_assets', true)) {
 
         }
     }
