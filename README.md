@@ -537,7 +537,8 @@ npm run prod
 npm run hot
 ```
 
-
+##Dashboard
+<img width="1512" alt="image" src="https://github.com/user-attachments/assets/3eb8dc9b-87fe-4a1d-969b-ad9d8b8e1286" />
 
 
 
