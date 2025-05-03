@@ -50,7 +50,7 @@
 
           <!-- Basic Modal -->
           <Modal
-            :visible.sync="basicModalVisible"
+            v-model:visible="basicModalVisible"
             title="Basic Modal"
             @confirm="handleBasicConfirm"
             @cancel="handleBasicCancel"
@@ -60,7 +60,7 @@
 
           <!-- Confirmation Modal -->
           <Modal
-            :visible.sync="confirmModalVisible"
+            v-model:visible="confirmModalVisible"
             title="Confirm Action"
             confirm-text="Yes, Delete"
             cancel-text="Cancel"
@@ -75,7 +75,7 @@
 
           <!-- Custom Modal -->
           <Modal
-            :visible.sync="customModalVisible"
+            v-model:visible="customModalVisible"
             title="Custom Modal"
             width="70%"
           >
@@ -124,8 +124,8 @@
 
           <FileUploader
             v-model="uploadedFiles"
-            action="/wp-admin/admin-ajax.php?action=wp_plugin_matrix_starter_admin_ajax&route=upload"
-            :headers="{ 'X-WP-Nonce': wpBoilerplateAdmin.nonce }"
+            action="/wp-admin/admin-ajax.php?action=wp_plugin_matrix_boiler_plate_admin_ajax&route=upload"
+            :headers="{ 'X-WP-Nonce': $root.appVars.nonce }"
             :multiple="true"
             :limit="5"
             :custom-upload="true"
@@ -167,114 +167,6 @@
           </div>
         </el-tab-pane>
 
-
-
-        <el-tab-pane label="Commands" name="commands">
-          <h2>Available Commands</h2>
-          <p>This tab demonstrates the various commands available in the WP Plugin Matrix Starter plugin.</p>
-
-          <el-collapse accordion>
-            <el-collapse-item title="WP-CLI Commands" name="wp-cli">
-              <div class="command-section">
-                <h3>Database Migration Commands</h3>
-                <div class="command-item">
-                  <code>wp wp-plugin-matrix-starter migrate</code>
-                  <p>Run all pending migrations</p>
-                </div>
-                <div class="command-item">
-                  <code>wp wp-plugin-matrix-starter migrate:rollback</code>
-                  <p>Rollback the last batch of migrations</p>
-                </div>
-                <div class="command-item">
-                  <code>wp wp-plugin-matrix-starter migrate:rollback --steps=3</code>
-                  <p>Rollback multiple batches</p>
-                </div>
-                <div class="command-item">
-                  <code>wp wp-plugin-matrix-starter migrate:reset</code>
-                  <p>Reset all migrations</p>
-                </div>
-                <div class="command-item">
-                  <code>wp wp-plugin-matrix-starter migrate:make create_custom_table --table=custom_table</code>
-                  <p>Create a new migration</p>
-                </div>
-                <div class="command-item">
-                  <code>wp wp-plugin-matrix-starter migrate:status</code>
-                  <p>Show migration status</p>
-                </div>
-              </div>
-            </el-collapse-item>
-
-            <el-collapse-item title="NPM Commands" name="npm">
-              <div class="command-section">
-                <h3>Asset Compilation Commands</h3>
-                <div class="command-item">
-                  <code>npm install</code>
-                  <p>Install dependencies</p>
-                </div>
-                <div class="command-item">
-                  <code>npm run dev</code>
-                  <p>Development build with source maps</p>
-                </div>
-                <div class="command-item">
-                  <code>npm run watch</code>
-                  <p>Watch for changes and rebuild automatically</p>
-                </div>
-                <div class="command-item">
-                  <code>npm run prod</code>
-                  <p>Production build with optimizations</p>
-                </div>
-                <div class="command-item">
-                  <code>npm run hot</code>
-                  <p>Hot module replacement for development</p>
-                </div>
-              </div>
-            </el-collapse-item>
-
-            <el-collapse-item title="Composer Commands" name="composer">
-              <div class="command-section">
-                <h3>PHP Dependency Management Commands</h3>
-                <div class="command-item">
-                  <code>composer install</code>
-                  <p>Install dependencies</p>
-                </div>
-                <div class="command-item">
-                  <code>composer update</code>
-                  <p>Update dependencies</p>
-                </div>
-                <div class="command-item">
-                  <code>composer install --dev</code>
-                  <p>Install development dependencies</p>
-                </div>
-                <div class="command-item">
-                  <code>composer install --no-dev --optimize-autoloader</code>
-                  <p>Optimize autoloader for production</p>
-                </div>
-              </div>
-            </el-collapse-item>
-
-            <el-collapse-item title="Plugin Setup Commands" name="setup">
-              <div class="command-section">
-                <h3>Plugin Setup Commands</h3>
-                <div class="command-item">
-                  <code>php installer.php YourPluginName</code>
-                  <p>Set up a new plugin based on the boilerplate</p>
-                </div>
-                <div class="command-item">
-                  <code>composer install</code>
-                  <p>Install PHP dependencies</p>
-                </div>
-                <div class="command-item">
-                  <code>npm install</code>
-                  <p>Install JavaScript dependencies</p>
-                </div>
-                <div class="command-item">
-                  <code>npm run dev</code>
-                  <p>Build assets</p>
-                </div>
-              </div>
-            </el-collapse-item>
-          </el-collapse>
-        </el-tab-pane>
       </el-tabs>
     </el-card>
   </div>
@@ -325,8 +217,6 @@ export default {
 
       // Rich Text Editor
       editorContent: '<h2>Welcome to the Rich Text Editor</h2><p>This is a sample content to demonstrate the editor functionality.</p><ul><li>Feature 1</li><li>Feature 2</li><li>Feature 3</li></ul>',
-
-
     };
   },
 
@@ -471,8 +361,6 @@ export default {
         return (size / (1024 * 1024)).toFixed(2) + ' MB';
       }
     },
-
-
   }
 };
 </script>

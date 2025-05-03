@@ -1,6 +1,6 @@
 <template>
   <el-dialog
-    :visible.sync="dialogVisible"
+    v-model="dialogVisible"
     :title="title"
     :width="width"
     :fullscreen="fullscreen"

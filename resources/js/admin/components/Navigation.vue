@@ -9,8 +9,8 @@
     <router-link to="/settings" class="px-3 py-2 rounded-md">
       Settings
     </router-link>
-    <router-link to="/demo" class="px-3 py-2 rounded-md bg-blue-100">
-      Components Demo
+    <router-link to="/demo" class="px-3 py-2 rounded-md">
+      Demo
     </router-link>
   </div>
 </template>

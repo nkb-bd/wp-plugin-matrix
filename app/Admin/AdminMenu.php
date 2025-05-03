@@ -36,6 +36,11 @@ class AdminMenu
             'title' => 'Settings',
             'capability' => 'manage_options',
         ]);
+
+        $this->addMenuItem('demo', [
+            'title' => 'Demo',
+            'capability' => 'manage_options',
+        ]);
     }
 
     /**
@@ -64,21 +69,10 @@ class AdminMenu
 
         // Make sure we have menu items
         if (empty($this->menuItems)) {
-            // Add default menu items if none are defined
-            $this->addMenuItem('dashboard', [
-                'title' => 'Dashboard',
-                'capability' => 'manage_options',
-            ]);
-
-            $this->addMenuItem('contact', [
-                'title' => 'Contact',
-                'capability' => 'manage_options',
-            ]);
-
-            $this->addMenuItem('settings', [
-                'title' => 'Settings',
-                'capability' => 'manage_options',
-            ]);
+            // Log a warning if no menu items are defined
+            if (function_exists('wp_plugin_matrix_boiler_plate_warning')) {
+                wp_plugin_matrix_boiler_plate_warning('No menu items defined. Using default menu items.');
+            }
         }
 
         // Add submenu items
@@ -98,6 +92,8 @@ class AdminMenu
      */
     public function renderAdminPage()
     {
+        // Start output buffering
+        ob_start();
 
         echo '<div class="wp-plugin-matrix-boiler-plate-admin-page" id="wp_plugin_matrix_boiler_plate_app">
             <div class="main-menu">
@@ -113,6 +109,9 @@ class AdminMenu
             </div>
             <router-view></router-view>
         </div>';
+
+        // Flush the output buffer
+        ob_end_flush();
     }
 
     /**

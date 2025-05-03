@@ -36,10 +36,6 @@ class AdminHandler
         // Register admin menu
         add_action('admin_menu', [$this->adminMenu, 'registerMenuPages']);
 
-        // Register demo page
-        $demoPage = new \WPPluginMatrixBoilerPlate\Admin\DemoPage();
-        $demoPage->register();
-
         // Disable update nag on plugin pages
         add_action('admin_init', [$this, 'disableUpdateNag'], 20);
 
